@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Akshar&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Andada+Pro:ital@1&display=swap');
 #quality{
     color:blue;
     text-align: center;
@@ -66,4 +67,9 @@
 .link:hover
 {
     color: yellow;
+}
+.nav
+{
+    font-size: 30px;
+    font-family: 'Andada Pro', serif;
 }
