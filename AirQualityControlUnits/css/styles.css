@@ -84,7 +84,7 @@ table, td, tr, th
 }
 table
 {
-    width: 50%;
+    width: 70%;
 }
 th
 {
@@ -120,6 +120,7 @@ td
     background-color: transparent !important;
     border-radius: 0px !important;
     border-color: transparent !important;
+    width: 70% !important;
 }
 .indicator
 {
