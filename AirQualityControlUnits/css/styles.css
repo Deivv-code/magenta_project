@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Akshar&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Andada+Pro:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orelega+One&display=swap');
 #quality{
     color:blue;
     text-align: center;
@@ -72,4 +73,36 @@
 {
     font-size: 30px;
     font-family: 'Andada Pro', serif;
+}
+table, td, tr, th
+{
+   border: 1px solid black;
+   margin-left: 10px;
+   text-align: center;
+   margin-right: auto;
+   margin-left: auto;
+}
+table
+{
+    width: 50%;
+}
+th
+{
+    background-color:lightskyblue;
+    
+}
+td:hover
+{
+    background-color: lightgoldenrodyellow;
+}
+#info
+{
+    font-family: 'Orelega One', cursive;
+    text-align: center;
+    font-size: 30px;
+    text-shadow: 2px 2px 5px cyan;
+}
+td
+{
+    background-color: lightcyan;
 }
