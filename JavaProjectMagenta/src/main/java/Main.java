@@ -13,24 +13,32 @@ public class Main {
         String file_name = args[0];
         String sensor_name = args[1];
         System.out.println(args);
-
+        
         String currentDirectory = System.getProperty("user.dir");
         System.out.println(currentDirectory + "\\" + file_name);
         String filePath = currentDirectory + "\\files\\" + file_name;
         BufferedReader in = null;
         String line ="";
+
+        //double sum = 0;
+        //int count = 0;
         try {
             in = new BufferedReader(new FileReader(filePath));
+
             while((line = in.readLine() )!= null)
             {
                 String[] row = line.split(",");
-
+                /*double v = Double.parseDouble(row[0]);
+                sum = sum + v;
+                count++;
+                */
                 for(String index : row)
                 {
                     System.out.printf("%10s", index);
                 }
                 System.out.println();
             }
+
         }
         catch (Exception e)
         {
@@ -39,10 +47,12 @@ public class Main {
         finally {
             try {
                 in.close();
+               // System.out.println(sum/count);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
+
 
     /*    try {
             in = new FileReader(filePath);
