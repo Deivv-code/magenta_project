@@ -106,3 +106,29 @@ td
 {
     background-color: lightcyan;
 }
+.collapse
+{
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+#card-collapse
+{
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    background-color: transparent !important;
+    border-radius: 0px !important;
+    border-color: transparent !important;
+}
+.indicator
+{
+    width: 2%;
+    height: 2%;
+    opacity: 0.5;
+}
+.indicator:hover
+{
+   
+    opacity: 1;
+}
