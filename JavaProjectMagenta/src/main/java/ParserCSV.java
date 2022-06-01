@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -6,95 +7,66 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ParserCSV {
-    private String file_name;
+    String fileName;
+    String sensorT;
+
     static double [] [] ArrayCSV;
 
-    public ParserCSV(String file_name) {
-        file_name = "air_quality_data.csv";
-        this.file_name = file_name;
+    public ParserCSV(String fileName, String sensorT) {
+    this.fileName = fileName;
+    this.sensorT = sensorT;
     }
 
-public static  void main(String args[]) {
 
-
-    if (args.length == 0 || args.length == 1) {
-        System.out.println("Devi scrivere due parametri: ");
-        return;
-    }
-    String file_name = args[0];
-    String sensor_name = args[1];
-    System.out.println(args);
-    String currentDirectory = System.getProperty("user.dir");
-    String filePath = currentDirectory + "\\files\\" + file_name;
-
-    BufferedReader in = null;
-    String line = "";
-
-
-
-        try {
-            in = new BufferedReader(new FileReader(filePath));
-
-            while ((line = in.readLine()) != null) {
-                String[] row = line.split(",");
-
-                for (String index : row) {
-                    System.out.printf("%10s", index);
-                }
-                System.out.println();
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                in.close();
-                // System.out.println(sum/count);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-
-
-}
-
-    public void SetupArray()
+    public String Parse()
     {
-      ArrayCSV = new double [4][5];
 
-        Scanner scanIn= null;
-        int row = 0;
-        int col = 0;
-        int rowC = 0;
-        int colC = 0;
+        String fileName = this.fileName;
+        String sensorName = sensorT;
 
-        String InputLine = "";
-        double xnum = 0;
-        String xfileLocation = "air_quality_data.csv";
+        String currentDirectory = System.getProperty("user.dir");
+        File file = new File(currentDirectory + "\\files\\" + fileName);
 
+
+        ArrayList<String> dateTimes = new ArrayList();
+        ArrayList<String> sensorTypes = new ArrayList();
+        ArrayList<String> values = new ArrayList();
+
+        // GET
         try {
-            scanIn = new Scanner(new BufferedReader(new FileReader(xfileLocation)));
+            BufferedReader reader = new BufferedReader( new FileReader( file.getAbsolutePath() ) );
 
-            while (scanIn.hasNextLine())
-            {
-                InputLine = scanIn.nextLine();
+            // boolean isFirstLoop = true;
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // if (isFirstLoop) { isFirstLoop = false; continue; }
+                String[] data = line.split(";");
+                String dateTime = data[0];
+                String sensorType = data[3];
+                String value = data[4];
 
-                String[] inArray = InputLine.split(",");
-
-                for (int i =0; i<inArray.length; i++)
-                {
-                    ArrayCSV [rowC][i] = Double.parseDouble(inArray[i]);
-                }
-                rowC++;
+                dateTimes.add(dateTime);
+                sensorTypes.add(sensorType);
+                values.add(value);
             }
 
+
+        } catch(IOException e) { e.printStackTrace(); }
+
+        // PRINT
+        String s ="";
+        for (int i=0; i<dateTimes.size(); i++) {
+            s+="[" +
+                    "\""+dateTimes.get(i)+ "\", " +
+                    "\""+sensorTypes.get(i)+ "\", " +
+                    "\""+values.get(i)+ "\"" +
+                    "],";
         }
-        catch (Exception e)
-        {
-            System.out.println(e);
-        }
+        return s;
     }
+
+
+
 
 }
 
