@@ -133,3 +133,10 @@ td
    
     opacity: 1;
 }
+#googleMap
+{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+    margin-bottom: 100px;
+}

@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
 </head>
 
 <body id="template">
@@ -199,9 +200,7 @@
                         Limiti di riferimento <img src="./images/indicator.png" class="indicator"></a>
 
                 </p>
-                <div class="row">
-                    <div class="col">
-                        <div class="collapse multi-collapse" id="multiCollapseExample1">
+              
                             <div class="card card-body" id="card-collapse">
                                 <table id="tab">
                                     <tr>
@@ -229,14 +228,7 @@
                                     </tr>
                                 </table>
                             </div>
-                        </div>
-                    </div>
-
-
-
-
-
-                </div>
+                  
                 <hr class="my-4">
                 <p>Ecco alcuni grafici riguardati le polveri sottili:</p>
             </div>
@@ -268,8 +260,16 @@
                     In
                     particolare, risultano essere la sesta causa di morte prematura nel mondo. </p>
                 <hr class="my-4">
+                <p>Ecco il luogo in cui si trova la centralina dalla quale abbiamo rilevato i dati riguardanti il PM10 e il PM2.5:</p>
+               
             </div>
+           <div id="googleMap">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.9201881404606!2d11.253089615780157!3d43.774515552594856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3680c756ec1aa8d2!2zNDPCsDQ2JzI4LjIiTiAxMcKwMTUnMTkuMCJF!5e0!3m2!1sit!2sit!4v1654072411159!5m2!1sit!2sit" width=600px; height=450px
+            style=border:0; allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
+        </div>
+       
+
     </div>
 
 
