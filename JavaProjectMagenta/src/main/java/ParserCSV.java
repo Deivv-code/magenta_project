@@ -14,14 +14,23 @@ public class ParserCSV {
         this.file_name = file_name;
     }
 
+public static  void main(String args[]) {
 
+
+    if (args.length == 0 || args.length == 1) {
+        System.out.println("Devi scrivere due parametri: ");
+        return;
+    }
+    String file_name = args[0];
+    String sensor_name = args[1];
+    System.out.println(args);
     String currentDirectory = System.getProperty("user.dir");
     String filePath = currentDirectory + "\\files\\" + file_name;
 
     BufferedReader in = null;
     String line = "";
 
-    public void PrintCSV(String file_name) {
+
 
         try {
             in = new BufferedReader(new FileReader(filePath));
@@ -46,7 +55,9 @@ public class ParserCSV {
             }
         }
 
-    }
+
+
+}
 
     public void SetupArray()
     {
@@ -60,7 +71,7 @@ public class ParserCSV {
 
         String InputLine = "";
         double xnum = 0;
-        String xfileLocation = filePath;
+        String xfileLocation = "air_quality_data.csv";
 
         try {
             scanIn = new Scanner(new BufferedReader(new FileReader(xfileLocation)));

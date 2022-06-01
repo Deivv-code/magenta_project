@@ -6,18 +6,12 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        if (args.length == 0 || args.length == 1) {
-            System.out.println("Devi scrivere due parametri: ");
-            return;
-        }
-        String file_name = args[0];
-        String sensor_name = args[1];
-        System.out.println(args);
+
+    ParserCSV p = new ParserCSV("air_quality_data.csv");
 
 
-        ParserCSV p1 = new ParserCSV(file_name);
 
-        p1.SetupArray();
+
 
         //double sum = 0;
         //int count = 0;
