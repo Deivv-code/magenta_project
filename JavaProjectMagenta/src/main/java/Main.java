@@ -15,6 +15,9 @@ public class Main {
         System.out.println(args);
 
 
+        ParserCSV p1 = new ParserCSV(file_name);
+
+        p1.SetupArray();
 
         //double sum = 0;
         //int count = 0;
