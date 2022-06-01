@@ -5,12 +5,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Andada+Pro:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orelega+One&display=swap');
-#quality{
+#site-title{
     color:blue;
     text-align: center;
     font-family: 'Pacifico', cursive;
     text-shadow: 2px 2px 5px cyan;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 #template{
     background-color:lightblue;
@@ -156,4 +156,13 @@ td
 {
     margin-top: 10px !important;
     font-size: 1rem;
+}
+.alert-link
+{
+    color: blue !important;
+    
+}
+.alert-link:hover
+{
+    color:yellow !important;
 }
