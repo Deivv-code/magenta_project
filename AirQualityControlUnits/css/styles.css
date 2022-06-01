@@ -138,5 +138,22 @@ td
     margin-left: auto !important;
     margin-right: auto !important;
     text-align: center;
+    width: 100%;
     margin-bottom: 100px;
+   
+   
+}
+.list
+{
+  font-size: 15px;
+}
+.span-list
+{
+    font-style: italic;
+    
+}
+.col-sm-12
+{
+    margin-top: 10px !important;
+    font-size: 1rem;
 }
