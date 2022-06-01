@@ -4,69 +4,77 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class ParserCSV {
-    String fileName;
-    String sensorT;
+    private final File file;
 
-    static double [] [] ArrayCSV;
-
-    public ParserCSV(String fileName, String sensorT) {
-    this.fileName = fileName;
-    this.sensorT = sensorT;
+    public ParserCSV(String _fileName) {
+        String currentDirectory = System.getProperty("user.dir");
+        file = new File(currentDirectory + "\\files\\" + _fileName);
     }
 
-
-    public String Parse()
-    {
-
-        String fileName = this.fileName;
-        String sensorName = sensorT;
-
-        String currentDirectory = System.getProperty("user.dir");
-        File file = new File(currentDirectory + "\\files\\" + fileName);
-
-
-        ArrayList<String> dateTimes = new ArrayList();
-        ArrayList<String> sensorTypes = new ArrayList();
-        ArrayList<String> values = new ArrayList();
-
-        // GET
+    public ArrayList<String> fetch(int _index) {
+        ArrayList<String> values = new ArrayList<>();
         try {
-            BufferedReader reader = new BufferedReader( new FileReader( file.getAbsolutePath() ) );
-
-            // boolean isFirstLoop = true;
+            BufferedReader reader = new BufferedReader(new FileReader(file.getAbsolutePath()));
             String line;
             while ((line = reader.readLine()) != null) {
-                // if (isFirstLoop) { isFirstLoop = false; continue; }
                 String[] data = line.split(";");
-                String dateTime = data[0];
-                String sensorType = data[3];
-                String value = data[4];
-
-                dateTimes.add(dateTime);
-                sensorTypes.add(sensorType);
-                values.add(value);
+                String item = data[_index];
+                values.add(item);
             }
-
-
-        } catch(IOException e) { e.printStackTrace(); }
-
-        // PRINT
-        String s ="";
-        for (int i=0; i<dateTimes.size(); i++) {
-            s+="[" +
-                    "\""+dateTimes.get(i)+ "\", " +
-                    "\""+sensorTypes.get(i)+ "\", " +
-                    "\""+values.get(i)+ "\"" +
-                    "],";
-        }
-        return s;
+        } catch (IOException e) { e.printStackTrace(); }
+        return values;
     }
 
+    public ArrayList<Double> getMedia(String _sensorName) {
+        ArrayList<String> sensorNames = fetch(3);
+        ArrayList<String> values = fetch(4);
 
+        // process date
+        ArrayList<String> dateTimes = fetch(0);
+        ArrayList<String> date = new ArrayList<>();
+        for (String data : dateTimes) { date.add(data.split(" ")[0]); }
 
+        ArrayList<Double> medie = new ArrayList<>();
+
+        ArrayList<Integer> indexes = new ArrayList<>();
+        for (int i=1; i<date.size(); i++) {
+            indexes.add(i);
+            if (i+1<date.size()) { // se ci sono altri dati:
+                if (!(date.get(i).equals( date.get(i+1) )) ) { // se la data successiva è diversa dall' i-esima
+                    double media = 0;
+                    for (int j=0; j<indexes.size(); j++) {
+                        if (sensorNames.get(j).equals(_sensorName)) {
+                            media += Double.parseDouble( values.get(j) );
+                        }
+                    }
+                    media = media/indexes.size();
+                    medie.add(media);
+
+                    indexes.clear();
+                }
+            } else { // quando ha finito, aggiungi pure l'ultima media
+                double media = 0;
+                for (int j=0; j<indexes.size(); j++) {
+                    if (sensorNames.get(j).equals(_sensorName)) {
+                        media += Double.parseDouble( values.get(j) );
+                    }
+                }
+                media = media/indexes.size();
+                medie.add(media);
+
+                indexes.clear();
+            }
+        }
+
+        return medie;
+    }
 
 }
 
