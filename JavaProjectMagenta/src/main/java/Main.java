@@ -28,7 +28,7 @@ public class Main {
         String string = "";
         for (int i=0; i<date.size(); i++) {
             string = "[" +
-                    "\"" + date.get(i) + "\"" +
+                    "\"" + date.get(i) + "\"" + "," +
                     valori.get(i) +
                     "], ";
             System.out.println(string);

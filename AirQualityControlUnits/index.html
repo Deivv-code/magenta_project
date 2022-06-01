@@ -16,36 +16,129 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
-        ]);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ["datatime", "media"],
+                ["2022-01-01", 2.903124988079071],
+                ["2022-01-02", 2.767391287762186],
+                ["2022-01-03", 2.6520833174387612],
+                ["2022-01-04", 2.6520833174387612],
+                ["2022-01-05", 2.6520833174387612],
+                ["2022-01-06", 2.6520833174387612],
+                ["2022-01-07", 2.767391287762186],
+                ["2022-01-08", 2.6520833174387612],
+                ["2022-01-09", 2.6520833174387612],
+                ["2022-01-10", 2.6520833174387612],
+                ["2022-01-11", 2.6520833174387612],
+                ["2022-01-12", 2.767391287762186],
+                ["2022-01-13", 2.6520833174387612],
+                ["2022-01-14", 2.6520833174387612],
+                ["2022-01-15", 2.6520833174387612],
+                ["2022-01-16", 2.6520833174387612],
+                ["2022-01-17", 2.767391287762186],
+                ["2022-01-18", 2.6520833174387612],
+                ["2022-01-19", 2.6520833174387612],
+                ["2022-01-20", 2.6520833174387612],
+                ["2022-01-21", 2.767391287762186],
+                ["2022-01-22", 2.767391287762186],
+                ["2022-01-23", 2.6520833174387612],
+                ["2022-01-24", 2.6520833174387612],
+                ["2022-01-25", 2.6520833174387612],
+                ["2022-01-26", 2.767391287762186],
+                ["2022-01-27", 2.767391287762186],
+                ["2022-01-28", 2.6107142766316733],
+                ["2022-01-29", 2.6520833174387612],
+                ["2022-01-30", 2.6520833174387612],
+                ["2022-01-31", 2.767391287762186],
+                ["2022-02-01", 2.6520833174387612],
+                ["2022-02-02", 2.6520833174387612],
+                ["2022-02-03", 2.6520833174387612],
+                ["2022-02-04", 2.6520833174387612],
+                ["2022-02-05", 2.767391287762186],
+                ["2022-02-06", 2.6520833174387612],
+                ["2022-02-07", 2.6520833174387612],
+                ["2022-02-08", 2.6520833174387612],
+                ["2022-02-09", 2.767391287762186],
+                ["2022-02-10", 2.767391287762186],
+                ["2022-02-11", 2.767391287762186],
+                ["2022-02-12", 2.6520833174387612],
+                ["2022-02-13", 2.580555544959174],
+                ["2022-02-14", 2.903124988079071],
+                ["2022-04-05", 2.903124988079071],
+                ["2022-04-06", 2.6520833174387612],
+                ["2022-04-07", 2.767391287762186],
+                ["2022-04-08", 2.767391287762186],
+                ["2022-04-09", 2.6520833174387612],
+                ["2022-04-10", 2.6520833174387612],
+                ["2022-04-11", 2.6520833174387612],
+                ["2022-04-12", 2.6520833174387612],
+                ["2022-04-13", 2.6520833174387612],
+                ["2022-04-14", 2.767391287762186],
+                ["2022-04-15", 2.6520833174387612],
+                ["2022-04-16", 2.6520833174387612],
+                ["2022-04-17", 2.6520833174387612],
+                ["2022-04-18", 2.6520833174387612],
+                ["2022-04-19", 2.6520833174387612],
+                ["2022-04-20", 2.767391287762186],
+                ["2022-04-21", 2.6520833174387612],
+                ["2022-04-22", 2.6520833174387612],
+                ["2022-04-23", 2.6520833174387612],
+                ["2022-04-24", 2.6520833174387612],
+                ["2022-04-25", 2.6520833174387612],
+                ["2022-04-26", 2.6520833174387612],
+                ["2022-04-27", 2.767391287762186],
+                ["2022-04-28", 2.6520833174387612],
+                ["2022-04-29", 2.6520833174387612],
+                ["2022-04-30", 2.5863636190241035],
+                ["2022-05-01", 2.6520833174387612],
+                ["2022-05-02", 2.6520833174387612],
+                ["2022-05-03", 2.767391287762186],
+                ["2022-05-04", 2.767391287762186],
+                ["2022-05-05", 2.6520833174387612],
+                ["2022-05-06", 2.8020833134651184],
+                ["2022-05-07", 2.6520833174387612],
+                ["2022-05-08", 2.6520833174387612],
+                ["2022-05-09", 2.6520833174387612],
+                ["2022-05-10", 2.767391287762186],
+                ["2022-05-11", 2.5812499821186066],
+                ["2022-05-12", 2.6520833174387612],
+                ["2022-05-13", 2.6520833174387612],
+                ["2022-05-14", 2.6520833174387612],
+                ["2022-05-15", 2.6520833174387612],
+                ["2022-05-16", 2.767391287762186],
+                ["2022-05-17", 2.767391287762186],
+                ["2022-05-18", 2.6520833174387612],
+                ["2022-05-19", 2.9249999863760814],
 
-        var options = {
-          title: 'Company Performance',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
 
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
-        chart.draw(data, options);
-      }
+            ]);
+
+            var options = {
+                title: 'Company Performance',
+                curveType: 'function',
+                legend: {
+                    position: 'bottom'
+                }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
     </script>
- 
+
 </head>
 
 <body id="template">
 
     <h1 id="site-title">Controllo qualità dell'aria</h1>
-  
+
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
@@ -73,7 +166,7 @@
                     polmoni e nel sangue, causando quindi attacchi cardiaci, malattie respiratorie, e morte prematura.
                     In
                     particolare, risultano essere la sesta causa di morte prematura nel mondo. </p>
-                    
+
                 <hr class="my-4">
                 <p>Le polveri sottili sono classificate in base alla loro dimensione: </p>
 
@@ -207,8 +300,10 @@
 
             </div>
             <div class="alert alert-primary" role="alert">
-                Ricordati di passare per il nostro <a href="https://www.magentalab.it/?lang=it" class="alert-link" target="_blank">sito</a> e per l'applicazione <a href="https://www.airqino.it/"class="alert-link"target="_blank">Airqino</a>.
-              </div>
+                Ricordati di passare per il nostro <a href="https://www.magentalab.it/?lang=it" class="alert-link"
+                    target="_blank">sito</a> e per l'applicazione <a href="https://www.airqino.it/" class="alert-link"
+                    target="_blank">Airqino</a>.
+            </div>
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="jumbotron">
@@ -276,8 +371,10 @@
                 </div>
             </div>
             <div class="alert alert-primary" role="alert">
-                Ricordati di passare per il nostro <a href="https://www.magentalab.it/?lang=it" class="alert-link" target="_blank">sito</a> e per l'applicazione <a href="https://www.airqino.it/"class="alert-link"target="_blank">Airqino</a>.
-              </div>
+                Ricordati di passare per il nostro <a href="https://www.magentalab.it/?lang=it" class="alert-link"
+                    target="_blank">sito</a> e per l'applicazione <a href="https://www.airqino.it/" class="alert-link"
+                    target="_blank">Airqino</a>.
+            </div>
         </div>
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
             <div class="jumbotron">
@@ -290,9 +387,11 @@
                         <li class="list">Temperatura(<span class="span-list"><b>T</b></span>)</li>
                         <li class="list">PM10 (<span class="span-list"><b>polveri con Ø - 10 µm</b></span>)</li>
                         <li class="list">PM2,5 (<span class="span-list"><b>polveri con Ø - 2,5 µm</b></span>)</li>
-                        
+
                     </ul>
-                    <p>Per ulteriori informazioni riguardo le nostre centraline <a href ="https://airqino.magentalab.it/#/map?idProjects=7,15,16,17,18,19,20,21,22,23,24,25,26,27,12425092,30645008,39976696,39983189,82825204,85531947,112141162,121216137,132285007,134413912,134414483,134414605,134414760,199670115" class="link" target="_blank">clicca qui</a></p>
+                    <p>Per ulteriori informazioni riguardo le nostre centraline <a
+                            href="https://airqino.magentalab.it/#/map?idProjects=7,15,16,17,18,19,20,21,22,23,24,25,26,27,12425092,30645008,39976696,39983189,82825204,85531947,112141162,121216137,132285007,134413912,134414483,134414605,134414760,199670115"
+                            class="link" target="_blank">clicca qui</a></p>
 
 
 
@@ -315,8 +414,10 @@
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="alert alert-primary" role="alert">
-                Ricordati di passare per il nostro <a href="https://www.magentalab.it/?lang=it" class="alert-link" target="_blank">sito</a> e per l'applicazione <a href="https://www.airqino.it/"class="alert-link"target="_blank">Airqino</a>.
-              </div>
+                Ricordati di passare per il nostro <a href="https://www.magentalab.it/?lang=it" class="alert-link"
+                    target="_blank">sito</a> e per l'applicazione <a href="https://www.airqino.it/" class="alert-link"
+                    target="_blank">Airqino</a>.
+            </div>
         </div>
 
 
