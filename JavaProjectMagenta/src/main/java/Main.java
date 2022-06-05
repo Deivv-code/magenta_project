@@ -7,21 +7,21 @@ public class Main {
 
         ParserCSV parser = new ParserCSV(fileName);
 
-        ArrayList<Double> valori = parser.getMedia("PM2.5");
+        ArrayList<Double> values = parser.getAverage("PM2.5");
         // process dateTimes
         ArrayList<String> dateTimes = parser.fetch(0);
         ArrayList<String> Alldates = new ArrayList<>();
         ArrayList<String> date = new ArrayList<>();
 
-        for (String data : dateTimes) { Alldates.add(data.split(" ")[0]); } // toglie le ore
-        for (int i=1; i<Alldates.size(); i++) { // elimina le date uguali
+        for (String data : dateTimes) { Alldates.add(data.split(" ")[0]); } //remove hours
+        for (int i=1; i<Alldates.size(); i++) { // delete the same dates
             if ( i+1<Alldates.size() && !(Alldates.get(i).equals( Alldates.get(i+1) )) ) {
                 date.add( Alldates.get(i) );
             }
         }
         date.add(Alldates.get(Alldates.size()-1));
 
-        print(date, valori);
+        print(date, values);
     }
 
     public static void print(ArrayList<String> date, ArrayList<Double> valori) {

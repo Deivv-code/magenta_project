@@ -32,7 +32,7 @@ public class ParserCSV {
         return values;
     }
 
-    public ArrayList<Double> getMedia(String _sensorName) {
+    public ArrayList<Double> getAverage(String _sensorName) {
         ArrayList<String> sensorNames = fetch(3);
         ArrayList<String> values = fetch(4);
 
@@ -41,39 +41,39 @@ public class ParserCSV {
         ArrayList<String> date = new ArrayList<>();
         for (String data : dateTimes) { date.add(data.split(" ")[0]); }
 
-        ArrayList<Double> medie = new ArrayList<>();
+        ArrayList<Double> averages = new ArrayList<>();
 
         ArrayList<Integer> indexes = new ArrayList<>();
         for (int i=1; i<date.size(); i++) {
             indexes.add(i);
-            if (i+1<date.size()) { // se ci sono altri dati:
-                if (!(date.get(i).equals( date.get(i+1) )) ) { // se la data successiva è diversa dall' i-esima
-                    double media = 0;
+            if (i+1<date.size()) {
+                if (!(date.get(i).equals( date.get(i+1) )) ) {
+                    double average = 0;
                     for (int j=0; j<indexes.size(); j++) {
                         if (sensorNames.get(j).equals(_sensorName)) {
-                            media += Double.parseDouble( values.get(j) );
+                            average += Double.parseDouble( values.get(j) );
                         }
                     }
-                    media = media/indexes.size();
-                    medie.add(media);
+                    average = average/indexes.size();
+                    averages.add(average);
 
                     indexes.clear();
                 }
-            } else { // quando ha finito, aggiungi pure l'ultima media
-                double media = 0;
+            } else {
+                double average = 0;
                 for (int j=0; j<indexes.size(); j++) {
                     if (sensorNames.get(j).equals(_sensorName)) {
-                        media += Double.parseDouble( values.get(j) );
+                        average += Double.parseDouble( values.get(j) );
                     }
                 }
-                media = media/indexes.size();
-                medie.add(media);
+                average = average/indexes.size();
+                averages.add(average);
 
                 indexes.clear();
             }
         }
 
-        return medie;
+        return averages;
     }
 
     public  Double AnnualAverage(String _sensorName)
@@ -117,7 +117,7 @@ public class ParserCSV {
         {
             if (_sensorName.equals("PM10"))
             {
-                average = getMedia("PM10");
+                average = getAverage("PM10");
                 for (int j =0 ; j<average.size() ;j++)
                 {
                     if (average.get(j)>50)
@@ -129,7 +129,7 @@ public class ParserCSV {
             else if (_sensorName.equals("PM2.5"))
             {
 
-                average = getMedia("PM2.5");
+                average = getAverage("PM2.5");
 
                 for (int j =0 ; j<average.size() ;j++)
                 {
