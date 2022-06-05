@@ -42,7 +42,7 @@ public class ParserCSV {
         for (String data : dateTimes) { date.add(data.split(" ")[0]); }
 
         ArrayList<Double> averages = new ArrayList<>();
-
+        int counter = 0;
         ArrayList<Integer> indexes = new ArrayList<>();
         for (int i=1; i<date.size(); i++) {
             indexes.add(i);
@@ -52,22 +52,27 @@ public class ParserCSV {
                     for (int j=0; j<indexes.size(); j++) {
                         if (sensorNames.get(j).equals(_sensorName)) {
                             average += Double.parseDouble( values.get(j) );
+                            counter ++;
                         }
                     }
-                    average = average/indexes.size();
+                    average = average/counter;
                     averages.add(average);
 
                     indexes.clear();
+                    counter = 0;
                 }
             } else {
+
                 double average = 0;
                 for (int j=0; j<indexes.size(); j++) {
                     if (sensorNames.get(j).equals(_sensorName)) {
                         average += Double.parseDouble( values.get(j) );
+                        counter++;
                     }
                 }
-                average = average/indexes.size();
+                average = average/counter;
                 averages.add(average);
+                counter = 0;
 
                 indexes.clear();
             }
@@ -76,7 +81,7 @@ public class ParserCSV {
         return averages;
     }
 
-    public  Double AnnualAverage(String _sensorName)
+    /*public  Double AnnualAverage(String _sensorName)
     {
         ArrayList<String> sensorNames = fetch(3);
         ArrayList<String> values = fetch(4);
@@ -99,19 +104,19 @@ public class ParserCSV {
 
         }
         return average;
-    }
+    } */
 
     public String getDateTime(int i)
     {
         ArrayList<String> dateTimes = fetch(0);
         return dateTimes.get(i);
     }
-    public ArrayList <String> LimitExceeded(String _sensorName)
+    public int LimitExceeded(String _sensorName)
     {
         ArrayList<String> sensorNames = fetch(3);
-        ArrayList<String> values = fetch(4);
+
         ArrayList<Double> average = new ArrayList<>();
-        ArrayList<String> exceed = new ArrayList<>();
+        int counter = 0;
         ArrayList<String> dateTimes = fetch(0);
         for (int i =0 ; i< sensorNames.size();i++)
         {
@@ -120,9 +125,9 @@ public class ParserCSV {
                 average = getAverage("PM10");
                 for (int j =0 ; j<average.size() ;j++)
                 {
-                    if (average.get(j)>50)
+                    if (average.get(j)>5.0)
                     {
-                        exceed.add(dateTimes.get(j));
+                        counter++;
                     }
                 }
             }
@@ -133,9 +138,9 @@ public class ParserCSV {
 
                 for (int j =0 ; j<average.size() ;j++)
                 {
-                    if (average.get(j)>25)
+                    if (average.get(j)>2.5)
                     {
-                        exceed.add(dateTimes.get(j));
+                        counter++;
                     }
                 }
             }
@@ -152,7 +157,7 @@ public class ParserCSV {
         }
 
 
-        return exceed;
+        return counter;
     }
 }
 
