@@ -27,14 +27,14 @@ public class Main {
         }
         date.add(Alldates.get(Alldates.size() - 1));
 
-       /* System.out.println("start");
-        int a = parser.LimitExceeded("PM10");
+       System.out.println("start");
+        int a = parser.LimitExceeded("PM2.5");
         System.out.println("ez");
         System.out.println(a);
-*/
-         print(date, values);
 
-        //printTRH(date, valuesT,valuesRH );
+        // print(date, values);
+
+       // printTRH(date, valuesT,valuesRH );
 
 
     }
@@ -54,12 +54,15 @@ public class Main {
 
     public static void printTRH(ArrayList<String> date, ArrayList<Double> valuesT, ArrayList<Double> valuesRH) {
         String string = "";
+
         for (int i = 0; i < date.size(); i++) {
             string = "[" +
-                    "\"" + date.get(i) + "\"" + "," +
-                    valuesT.get(i) +  "," +  valuesRH.get(i) +
+                    "\"" + date.get(i) +  "\"" + "," +
+
+                     valuesT.get(i) +  "," +  valuesRH.get(i) +
                     "], ";
             System.out.println(string);
+
         }
     }
 }

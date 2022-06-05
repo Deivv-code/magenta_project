@@ -190,3 +190,7 @@ td
 {
     font-family: 'Zen Dots', cursive;
 }
+#piechart
+{
+    background-color: transparent !important;
+}

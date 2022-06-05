@@ -451,4 +451,3 @@ var chart4 = new google.visualization.LineChart(document.getElementById('curve_c
 chart4.draw(data4, options4);
 }
 
-

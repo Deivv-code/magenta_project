@@ -125,7 +125,7 @@ public class ParserCSV {
                 average = getAverage("PM10");
                 for (int j =0 ; j<average.size() ;j++)
                 {
-                    if (average.get(j)>5.0)
+                    if (average.get(j)>50)
                     {
                         counter++;
                     }
@@ -138,7 +138,7 @@ public class ParserCSV {
 
                 for (int j =0 ; j<average.size() ;j++)
                 {
-                    if (average.get(j)>2.5)
+                    if (average.get(j)>25)
                     {
                         counter++;
                     }
