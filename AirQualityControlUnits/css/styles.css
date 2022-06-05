@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Andada+Pro:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orelega+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 #site-title{
     color:blue;
     text-align: center;
@@ -168,8 +169,24 @@ td
 }
 .graphs
 {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    margin-bottom: 10px !important;
+    margin-top: 0px !important;
+    
+}
+.graphs-div
+{
     width: 100%;
-    margin-bottom: 2px !important;
+   
+}
+#graph1
+{
+    text-align: center;
+}
+
+.title-graphs
+{
+    font-family: 'Zen Dots', cursive;
 }
