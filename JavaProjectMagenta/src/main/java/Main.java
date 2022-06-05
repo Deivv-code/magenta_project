@@ -7,7 +7,7 @@ public class Main {
 
         ParserCSV parser = new ParserCSV(fileName);
 
-        ArrayList<Double> values = parser.getAverage("PM2.5");
+        ArrayList<Double> values = parser.getAverage("PM10");
         // process dateTimes
         ArrayList<String> dateTimes = parser.fetch(0);
         ArrayList<String> Alldates = new ArrayList<>();
