@@ -76,6 +76,31 @@ public class ParserCSV {
         return medie;
     }
 
+    public  Double AnnualAverage(String _sensorName)
+    {
+        ArrayList<String> sensorNames = fetch(3);
+        ArrayList<String> values = fetch(4);
+
+        int counter = 0;
+        double average = 0;
+
+        for (int i=0;i<sensorNames.size();i++)
+        {
+            if (sensorNames.get(i).equals(_sensorName))
+            {
+                for (int j = 0; j<values.size();i++)
+                {
+                    average += Double.parseDouble(values.get(j));
+                    counter++;
+                }
+                average = average /counter;
+
+            }
+
+        }
+        return average;
+    }
+
     public String getDateTime(int i)
     {
         ArrayList<String> dateTimes = fetch(0);
@@ -105,7 +130,7 @@ public class ParserCSV {
             {
 
                 average = getMedia("PM2.5");
-                //annual average
+
                 for (int j =0 ; j<average.size() ;j++)
                 {
                     if (average.get(j)>25)
@@ -116,12 +141,12 @@ public class ParserCSV {
             }
             else if (_sensorName.equals("T"))
             {
-                //annual average
+
                 throw new NullPointerException("The limit about this sensor type doesn't exist");
             }
             else if (_sensorName.equals("RH"))
             {
-                //annual average
+
                 throw new NullPointerException("The limit about this sensor type doesn't exist");
             }
         }

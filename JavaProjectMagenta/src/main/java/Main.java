@@ -7,7 +7,7 @@ public class Main {
 
         ParserCSV parser = new ParserCSV(fileName);
 
-        ArrayList<Double> valori = parser.getMedia("PM10");
+        ArrayList<Double> valori = parser.getMedia("PM2.5");
         // process dateTimes
         ArrayList<String> dateTimes = parser.fetch(0);
         ArrayList<String> Alldates = new ArrayList<>();
