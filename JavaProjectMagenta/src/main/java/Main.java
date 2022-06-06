@@ -31,11 +31,11 @@ public class Main {
         date.add(Alldates.get(Alldates.size() - 1));
 
 
-        int b = parser.LimitExceeded("RH");
+     //   int b = parser.LimitExceeded("RH");
 
-        System.out.println(b);
+       // System.out.println(b);
 
-        // print(date, values);
+         print(date, values);
 
        // printTRH(date, valuesT,valuesRH );
 

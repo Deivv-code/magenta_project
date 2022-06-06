@@ -108,7 +108,7 @@ function drawChart() {
   var options = {
       title: 'Grafico valori temperatura',
       curveType: 'function',
-
+      
       legend: {
           position: 'bottom',
                  
