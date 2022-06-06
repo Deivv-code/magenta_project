@@ -15,6 +15,14 @@ public class ReaderCSV {
         dateTime = a.fetch(0);
 
     }
+    public ReaderCSV()
+    {
+
+        sensorNames = a.fetch(3);
+        values = a.fetch(4);
+        dateTime = a.fetch(0);
+
+    }
     //use this class to not use too much times fetch.
 
     public ArrayList <String> getSensorNames()

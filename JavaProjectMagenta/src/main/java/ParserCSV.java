@@ -32,6 +32,8 @@ public class ParserCSV {
         return values;
     }
 
+
+
     public ArrayList<Double> getAverage(String _sensorName) {
         //ArrayList<String> sensorNames = fetch(3);
        // ArrayList<String> values = fetch(4);
@@ -86,21 +88,21 @@ public class ParserCSV {
         return averages;
     }
 
-    /*public  Double AnnualAverage(String _sensorName)
+    public  Double AnnualAverage(String _sensorName)
     {
-        ArrayList<String> sensorNames = fetch(3);
-        ArrayList<String> values = fetch(4);
+        ReaderCSV a = new ReaderCSV(this);
+
 
         int counter = 0;
         double average = 0;
 
-        for (int i=0;i<sensorNames.size();i++)
+        for (int i=0;i<a.getSensorNames().size();i++)
         {
-            if (sensorNames.get(i).equals(_sensorName))
+            if (a.getSensorNames().get(i).equals(_sensorName))//(sensorNames.get(i).equals(_sensorName))
             {
-                for (int j = 0; j<values.size();i++)
+                for (int j = 0; j<a.getValues().size();i++)
                 {
-                    average += Double.parseDouble(values.get(j));
+                    average += Double.parseDouble(a.getValues().get(j));
                     counter++;
                 }
                 average = average /counter;
@@ -109,7 +111,7 @@ public class ParserCSV {
 
         }
         return average;
-    } */
+    }
 
     public String getDateTime(int i)
     {
@@ -152,13 +154,26 @@ public class ParserCSV {
             }
             else if (_sensorName.equals("T"))
             {
-
-                throw new NullPointerException("The limit about this sensor type doesn't exist");
+                average = getAverage("T");
+                for (int j = 0; j<average.size();i++)
+                {
+                    if (average.get(j)>47)
+                    {
+                        counter++;
+                    }
+                }
             }
             else if (_sensorName.equals("RH"))
             {
 
-                throw new NullPointerException("The limit about this sensor type doesn't exist");
+                average = getAverage("RH");
+                for (int j = 0; j<average.size();i++)
+                {
+                    if (average.get(j)>65)
+                    {
+                        counter++;
+                    }
+                }
             }
         }
 

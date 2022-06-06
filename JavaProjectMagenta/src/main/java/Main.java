@@ -30,16 +30,19 @@ public class Main {
         }
         date.add(Alldates.get(Alldates.size() - 1));
 
-      /* System.out.println("start");
-        int b = parser.LimitExceeded("PM2.5");
+     /*  System.out.println("start");
+        int b = parser.LimitExceeded("RH");
         System.out.println("ez");
         System.out.println(b);
-      */
+*/
          print(date, values);
 
        // printTRH(date, valuesT,valuesRH );
 
         //printDate(date);
+
+        double c = parser.AnnualAverage("T");
+        System.out.println(c);
     }
 
     public static void print(ArrayList<String> date, ArrayList<Double> values) {
@@ -70,11 +73,13 @@ public class Main {
     }
     public static void printDate(ArrayList <String> date)
     {
+        String a = "";
         for (int i = 0; i<date.size();i++)
         {
-            String a = "[" + "\"" + date.get(i) + "\"" + "]";
+             a = "[" + "\"" + date.get(i) + "\"" + "]";
             System.out.println(a);
         }
 
     }
+
 }
