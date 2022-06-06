@@ -33,13 +33,18 @@ public class ParserCSV {
     }
 
     public ArrayList<Double> getAverage(String _sensorName) {
-        ArrayList<String> sensorNames = fetch(3);
-        ArrayList<String> values = fetch(4);
+        //ArrayList<String> sensorNames = fetch(3);
+       // ArrayList<String> values = fetch(4);
+
+        //ArrayList <String> datetimes = fetch(0);
+        ReaderCSV a = new ReaderCSV(this);
+
+        //change all ArrayList that use fetch with a.get
 
         // process date
-        ArrayList<String> dateTimes = fetch(0);
+
         ArrayList<String> date = new ArrayList<>();
-        for (String data : dateTimes) { date.add(data.split(" ")[0]); }
+        for (String data : a.getDateTime()/*dateTimes*/) { date.add(data.split(" ")[0]); }
 
         ArrayList<Double> averages = new ArrayList<>();
         int counter = 0;
@@ -50,8 +55,8 @@ public class ParserCSV {
                 if (!(date.get(i).equals( date.get(i+1) )) ) {
                     double average = 0;
                     for (int j=0; j<indexes.size(); j++) {
-                        if (sensorNames.get(j).equals(_sensorName)) {
-                            average += Double.parseDouble( values.get(j) );
+                        if (a.getSensorNames().get(j).equals(_sensorName)){ //sensorNames.get(j).equals(_sensorName)) {
+                            average += Double.parseDouble( a.getValues().get(j));//values.get(j) );
                             counter ++;
                         }
                     }
@@ -65,8 +70,8 @@ public class ParserCSV {
 
                 double average = 0;
                 for (int j=0; j<indexes.size(); j++) {
-                    if (sensorNames.get(j).equals(_sensorName)) {
-                        average += Double.parseDouble( values.get(j) );
+                    if (a.getSensorNames().get(j).equals(_sensorName)){ //sensorNames.get(j).equals(_sensorName)) {
+                        average += Double.parseDouble( a.getValues().get(j));//values.get(j) );
                         counter++;
                     }
                 }
@@ -108,17 +113,18 @@ public class ParserCSV {
 
     public String getDateTime(int i)
     {
-        ArrayList<String> dateTimes = fetch(0);
+        ReaderCSV a = new ReaderCSV(this);
+        ArrayList<String> dateTimes = a.getDateTime();
         return dateTimes.get(i);
     }
     public int LimitExceeded(String _sensorName)
     {
-        ArrayList<String> sensorNames = fetch(3);
-
+       // ArrayList<String> sensorNames = fetch(3);
+        ReaderCSV a = new ReaderCSV(this);
         ArrayList<Double> average = new ArrayList<>();
         int counter = 0;
-        ArrayList<String> dateTimes = fetch(0);
-        for (int i =0 ; i< sensorNames.size();i++)
+        //ArrayList<String> dateTimes = fetch(0);
+        for (int i =0 ; i<a.getSensorNames().size();i++) //i< sensorNames.size();i++)
         {
             if (_sensorName.equals("PM10"))
             {

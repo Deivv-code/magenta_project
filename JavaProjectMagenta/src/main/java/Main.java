@@ -8,12 +8,15 @@ public class Main {
 
         ParserCSV parser = new ParserCSV(fileName);
 
+        ReaderCSV a = new ReaderCSV(parser);
         ArrayList<Double> values = parser.getAverage("T");
 
         ArrayList<Double> valuesT = parser.getAverage("T");
         ArrayList <Double> valuesRH = parser.getAverage("RH");
         // process dateTimes
-        ArrayList<String> dateTimes = parser.fetch(0);
+
+
+        ArrayList<String> dateTimes = a.getDateTime();
         ArrayList<String> Alldates = new ArrayList<>();
         ArrayList<String> date = new ArrayList<>();
 
@@ -27,16 +30,16 @@ public class Main {
         }
         date.add(Alldates.get(Alldates.size() - 1));
 
-    /*   System.out.println("start");
-        int a = parser.LimitExceeded("PM2.5");
+      /* System.out.println("start");
+        int b = parser.LimitExceeded("PM2.5");
         System.out.println("ez");
-        System.out.println(a);
-*/
-        // print(date, values);
+        System.out.println(b);
+      */
+         print(date, values);
 
        // printTRH(date, valuesT,valuesRH );
 
-        printDate(date);
+        //printDate(date);
     }
 
     public static void print(ArrayList<String> date, ArrayList<Double> values) {
