@@ -30,19 +30,19 @@ public class Main {
         }
         date.add(Alldates.get(Alldates.size() - 1));
 
-     /*  System.out.println("start");
+
         int b = parser.LimitExceeded("RH");
-        System.out.println("ez");
+
         System.out.println(b);
-*/
-         print(date, values);
+
+        // print(date, values);
 
        // printTRH(date, valuesT,valuesRH );
 
         //printDate(date);
 
-        double c = parser.AnnualAverage("T");
-        System.out.println(c);
+       // double c = parser.AnnualAverage("T");
+       // System.out.println(c);
     }
 
     public static void print(ArrayList<String> date, ArrayList<Double> values) {

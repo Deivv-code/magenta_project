@@ -342,6 +342,7 @@ function drawChart3() {
     curveType: 'function',
     legend: {
         position: 'bottom',
+        
        
     }
 };
@@ -452,8 +453,10 @@ function drawChart4() {
     curveType: 'function',
     legend: {
         position: 'bottom',
-       
+        
     }
+    
+    
 };
 
 var chart4 = new google.visualization.LineChart(document.getElementById('curve_chart4'));
@@ -466,18 +469,18 @@ chart4.draw(data4, options4);
 
 function drawStuff() {
   var data = new google.visualization.DataTable();
-  data.addColumn('string', 'Country');
-  data.addColumn('number', 'GDP');
+  data.addColumn('string', 'Sensore');
+  data.addColumn('number', 'Giorni');
   data.addRows([
-    ['US', 16768100],
-    ['China', 9181204],
-    ['Japan', 4898532],
-    ['PM2.5', 0],
-    ['PM10', 0]
+    
+    ['RH', 4],
+    ['T', 6],
+    ['PM2.5', 4],
+    ['PM10', 4]
   ]);
 
  var options = {
-   title: 'GDP of selected countries, in US $millions',
+   title: 'Giorni nella quale è stato superato il limite di riferimento',
  
    legend: 'none',
    bar: {groupWidth: '95%'},

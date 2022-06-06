@@ -18,18 +18,9 @@ public class ParserCSV {
         file = new File(currentDirectory + "\\files\\" + _fileName);
     }
 
-    public ArrayList<String> fetch(int _index) {
-        ArrayList<String> values = new ArrayList<>();
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file.getAbsolutePath()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(";");
-                String item = data[_index];
-                values.add(item);
-            }
-        } catch (IOException e) { e.printStackTrace(); }
-        return values;
+    public File getFile()
+    {
+        return file;
     }
 
 
@@ -123,30 +114,31 @@ public class ParserCSV {
     {
        // ArrayList<String> sensorNames = fetch(3);
         ReaderCSV a = new ReaderCSV(this);
-        ArrayList<Double> average = new ArrayList<>();
+        ArrayList<Double> average = getAverage(_sensorName);
+        System.out.println(average.size());
+        double limit = 0;
         int counter = 0;
         //ArrayList<String> dateTimes = fetch(0);
-        for (int i =0 ; i<a.getSensorNames().size();i++) //i< sensorNames.size();i++)
-        {
-            if (_sensorName.equals("PM10"))
-            {
-                average = getAverage("PM10");
-                for (int j =0 ; j<average.size() ;j++)
-                {
-                    if (average.get(j)>50)
-                    {
+
+
+            if (_sensorName.equals("PM10")) {
+                limit = 15;
+
+
+                for (int j = 0; j < average.size(); j++) {
+                    if (average.get(j) > limit) {
                         counter++;
                     }
                 }
             }
             else if (_sensorName.equals("PM2.5"))
             {
+                limit = 12.2;
 
-                average = getAverage("PM2.5");
 
                 for (int j =0 ; j<average.size() ;j++)
                 {
-                    if (average.get(j)>25)
+                    if (average.get(j)>limit)
                     {
                         counter++;
                     }
@@ -154,10 +146,11 @@ public class ParserCSV {
             }
             else if (_sensorName.equals("T"))
             {
-                average = getAverage("T");
-                for (int j = 0; j<average.size();i++)
+                limit = 11.2;
+
+                for (int j = 0; j<average.size();j++)
                 {
-                    if (average.get(j)>47)
+                    if (average.get(j)>limit)
                     {
                         counter++;
                     }
@@ -165,17 +158,17 @@ public class ParserCSV {
             }
             else if (_sensorName.equals("RH"))
             {
+                limit = 99.89;
 
-                average = getAverage("RH");
-                for (int j = 0; j<average.size();i++)
+                for (int j = 0; j<average.size();j++)
                 {
-                    if (average.get(j)>65)
+                    if (average.get(j)>limit)
                     {
                         counter++;
                     }
                 }
             }
-        }
+
 
 
         return counter;

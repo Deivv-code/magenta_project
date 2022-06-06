@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ReaderCSV {
@@ -9,20 +12,29 @@ public class ReaderCSV {
     public ReaderCSV(ParserCSV a)
 
     {
-        this.a = a;
-        sensorNames = a.fetch(3);
-        values = a.fetch(4);
-        dateTime = a.fetch(0);
+
+        sensorNames = fetch(3);
+        values = fetch(4);
+        dateTime = fetch(0);
 
     }
-    public ReaderCSV()
-    {
+    public ArrayList<String> fetch(int _index) {
+        ArrayList<String> values = new ArrayList<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(a.getFile().getAbsolutePath()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(";");
+                String item = data[_index];
+                values.add(item);
+            }
+        } catch (IOException e) { e.printStackTrace(); }
 
-        sensorNames = a.fetch(3);
-        values = a.fetch(4);
-        dateTime = a.fetch(0);
+        return values;
+
 
     }
+
     //use this class to not use too much times fetch.
 
     public ArrayList <String> getSensorNames()
