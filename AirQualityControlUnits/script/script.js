@@ -119,11 +119,22 @@ function drawChart() {
     legend: {
       position: 'bottom',
 
-    }
+    },
+    vAxis: {
+      title: 'Valori (scale of 1-10)'
 
-  };
+    },
+    hAxis: {
+      title: 'Media giornaliera',
+      format: 'h:mm a',
+      viewWindow: {
+        min: [7, 30, 0],
+        max: [17, 30, 0]
+      }
 
+  }
 
+  }
 
   var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
@@ -233,7 +244,20 @@ function drawChart2() {
     legend: {
       position: 'bottom',
 
-    }
+    },
+    vAxis: {
+      title: 'Valori (scale of 1-10)'
+
+    },
+    hAxis: {
+      title: 'Media giornaliera',
+      format: 'h:mm a',
+      viewWindow: {
+        min: [7, 30, 0],
+        max: [17, 30, 0]
+      }
+
+  }
 
 
 
@@ -351,8 +375,20 @@ function drawChart3() {
       position: 'bottom',
 
 
-    }
-  };
+    },
+    vAxis: {
+      title: 'Valori (scale of 1-10)'
+
+    },
+    hAxis: {
+      title: 'Media giornaliera',
+      format: 'h:mm a',
+      viewWindow: {
+        min: [7, 30, 0],
+        max: [17, 30, 0]
+      }
+  }
+}
 
   var chart3 = new google.visualization.LineChart(document.getElementById('curve_chart3'));
 
@@ -462,7 +498,19 @@ function drawChart4() {
     legend: {
       position: 'bottom',
 
-    }
+    },
+    vAxis: {
+      title: 'Valori (scale of 10-90)'
+
+    },
+    hAxis: {
+      title: 'Media giornaliera',
+      format: 'h:mm a',
+      viewWindow: {
+        min: [7, 30, 0],
+        max: [17, 30, 0]
+      }
+  }
 
 
   };
@@ -619,7 +667,19 @@ function drawChart5() {
       position: 'bottom',
 
 
-    }
+    },
+    vAxis: {
+      title: 'Valori (scale of 1-100)'
+
+    },
+    hAxis: {
+      title: 'Media giornaliera',
+      format: 'h:mm a',
+      viewWindow: {
+        min: [7, 30, 0],
+        max: [17, 30, 0]
+      }
+  }
 
 
   };
