@@ -190,14 +190,11 @@ td {
 
 }
 
-#graph1 {
-    text-align: center;
-}
+
 
 .title-graphs {
     font-family: 'Zen Dots', cursive;
+ 
+
 }
 
-#piechart {
-    background-color: transparent !important;
-}

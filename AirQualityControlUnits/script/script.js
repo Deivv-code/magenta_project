@@ -121,8 +121,8 @@ function drawChart() {
 
     },
     vAxis: {
-      title: 'Valori (scale of 1-10)'
-
+      title: 'Valori (scale of 1-20)',
+      
     },
     hAxis: {
       title: 'Media giornaliera',
@@ -246,7 +246,7 @@ function drawChart2() {
 
     },
     vAxis: {
-      title: 'Valori (scale of 1-10)'
+      title: 'Valori (scale of 1-20)'
 
     },
     hAxis: {
@@ -377,7 +377,7 @@ function drawChart3() {
 
     },
     vAxis: {
-      title: 'Valori (scale of 1-10)'
+      title: 'Valori (scale of 1-20)'
 
     },
     hAxis: {
@@ -544,6 +544,7 @@ function drawStuff() {
     },
     vAxis: {
       title: 'Giorni superamento (scale of 1-10)',
+    
       gridlines: {
         count: 4,
 
