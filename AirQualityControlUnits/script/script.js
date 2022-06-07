@@ -12,10 +12,10 @@ google.charts.setOnLoadCallback(drawStuff);
 
 
 function drawChart() {
-  
+
 
   var data = google.visualization.arrayToDataTable([
- 
+
     ["datatime", "media"],
 
     ["2022-01-01", 11.612499952316284],
@@ -132,7 +132,7 @@ function drawChart() {
         max: [17, 30, 0]
       }
 
-  }
+    }
 
   }
 
@@ -257,7 +257,7 @@ function drawChart2() {
         max: [17, 30, 0]
       }
 
-  }
+    }
 
 
 
@@ -387,8 +387,8 @@ function drawChart3() {
         min: [7, 30, 0],
         max: [17, 30, 0]
       }
+    }
   }
-}
 
   var chart3 = new google.visualization.LineChart(document.getElementById('curve_chart3'));
 
@@ -510,7 +510,7 @@ function drawChart4() {
         min: [7, 30, 0],
         max: [17, 30, 0]
       }
-  }
+    }
 
 
   };
@@ -546,7 +546,7 @@ function drawStuff() {
       title: 'Giorni superamento (scale of 1-10)',
       gridlines: {
         count: 4,
-       
+
       }
     }
   };
@@ -681,7 +681,7 @@ function drawChart5() {
         min: [7, 30, 0],
         max: [17, 30, 0]
       }
-  }
+    }
 
 
   };
