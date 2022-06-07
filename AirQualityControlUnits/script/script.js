@@ -543,8 +543,10 @@ function drawStuff() {
       groupWidth: '95%'
     },
     vAxis: {
+      title: 'Giorni superamento (scale of 1-10)',
       gridlines: {
-        count: 4
+        count: 4,
+       
       }
     }
   };
