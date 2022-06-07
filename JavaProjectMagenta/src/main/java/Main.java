@@ -20,12 +20,15 @@ public class Main {
         ArrayList<String> Alldates = new ArrayList<>();
         ArrayList<String> date = new ArrayList<>();
 
+
+
         for (String data : dateTimes) {
             Alldates.add(data.split(" ")[0]);
         } //remove hours
         for (int i = 1; i < Alldates.size(); i++) { // delete the same dates
             if (i + 1 < Alldates.size() && !(Alldates.get(i).equals(Alldates.get(i + 1)))) {
                 date.add(Alldates.get(i));
+
             }
         }
         date.add(Alldates.get(Alldates.size() - 1));
@@ -35,9 +38,9 @@ public class Main {
 
        // System.out.println(b);
 
-         print(date, values);
+        // print(date, values);
 
-       // printTRH(date, valuesT,valuesRH );
+       printTRH(date, valuesT,valuesRH );
 
         //printDate(date);
 
@@ -47,11 +50,13 @@ public class Main {
 
     public static void print(ArrayList<String> date, ArrayList<Double> values) {
         String string = "";
+
         for (int i = 0; i < date.size(); i++) {
             string = "[" +
                     "\"" + date.get(i) + "\"" + ","  +
                     values.get(i) +
                     "], ";
+
             System.out.println(string);
         }
 
