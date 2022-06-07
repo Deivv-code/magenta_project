@@ -6,115 +6,123 @@
 @import url('https://fonts.googleapis.com/css2?family=Andada+Pro:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orelega+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
-#site-title{
-    color:blue;
+
+#site-title {
+    color: blue;
     text-align: center;
     font-family: 'Pacifico', cursive;
     text-shadow: 2px 2px 5px cyan;
     margin-top: 20px;
 }
-#template{
-    background-color:lightblue;
+
+#template {
+    background-color: lightblue;
 }
-.container{
+
+.container {
     margin-right: auto;
     margin-left: auto;
 }
-.jumbotron
-{
+
+.jumbotron {
     background-color: transparent !important;
-    
+
 }
-.display-4
-{
+
+.display-4 {
     font-family: 'Satisfy', cursive !important;
 }
-.card-title
-{
+
+.card-title {
     color: blue;
     text-align: center;
     font-family: 'Akshar', sans-serif;
     margin-top: 10px;
 
 }
-.card{
+
+.card {
     background-color: lightskyblue !important;
-    border-color:dodgerblue !important;
+    border-color: dodgerblue !important;
     border-radius: 40px !important;
     width: 80% !important;
 }
-.card-text
-{
+
+.card-text {
     text-align: center !important;
 }
-.card-img-top
-{
+
+.card-img-top {
     width: 100% !important;
     height: 400px !important;
 }
-.btn-primary
-{
+
+.btn-primary {
     margin-top: 10px;
 }
-.btn-primary:hover
-{
-    
+
+.btn-primary:hover {
+
     background-color: yellow !important;
     color: black !important;
 }
-.link{
+
+.link {
     font-family: 'Kaushan Script', cursive;
     font-size: 20px;
 }
-.link:hover
-{
+
+.link:hover {
     color: yellow;
 }
-.nav
-{
+
+.nav {
     font-size: 30px;
     font-family: 'Andada Pro', serif;
 }
-table, td, tr, th
-{
-   border: 1px solid black;
-   margin-left: 10px;
-   text-align: center;
-   margin-right: auto;
-   margin-left: auto;
+
+table,
+td,
+tr,
+th {
+    border: 1px solid black;
+    margin-left: 10px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
 }
-table
-{
+
+table {
     width: 70%;
 }
-th
-{
-    background-color:lightskyblue;
-    
+
+th {
+    background-color: lightskyblue;
+
 }
-td:hover
-{
+
+td:hover {
     background-color: lightgoldenrodyellow;
 }
-#info
-{
+
+#info {
     font-family: 'Orelega One', cursive;
     text-align: center;
     font-size: 30px;
     text-shadow: 2px 2px 5px cyan;
 }
-td
-{
+
+td {
     background-color: lightcyan;
 }
-.collapse
-{
+
+.collapse {
     text-align: center !important;
     margin-left: auto !important;
     margin-right: auto !important;
 }
-#card-collapse
-{
+
+#card-collapse {
     text-align: center !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -123,74 +131,73 @@ td
     border-color: transparent !important;
     width: 70% !important;
 }
-.indicator
-{
+
+.indicator {
     width: 2%;
     height: 2%;
     opacity: 0.5;
 }
-.indicator:hover
-{
-   
+
+.indicator:hover {
+
     opacity: 1;
 }
-#googleMap
-{
+
+#googleMap {
     margin-left: auto !important;
     margin-right: auto !important;
     text-align: center;
     width: 100%;
     margin-bottom: 100px;
-   
-   
+
+
 }
-.list
-{
-  font-size: 15px;
+
+.list {
+    font-size: 15px;
 }
-.span-list
-{
+
+.span-list {
     font-style: italic;
-    
+
 }
-.col-sm-12
-{
+
+.col-sm-12 {
     margin-top: 10px !important;
     font-size: 1rem;
 }
-.alert-link
-{
+
+.alert-link {
     color: blue !important;
-    
+
 }
-.alert-link:hover
-{
-    color:yellow !important;
+
+.alert-link:hover {
+    color: yellow !important;
 }
-.graphs
-{
+
+.graphs {
     margin-left: auto !important;
     margin-right: auto !important;
     width: 100% !important;
     margin-bottom: 10px !important;
     margin-top: 0px !important;
-    
+
 }
-.graphs-div
-{
+
+.graphs-div {
     width: 100%;
-   
+
 }
-#graph1
-{
+
+#graph1 {
     text-align: center;
 }
 
-.title-graphs
-{
+.title-graphs {
     font-family: 'Zen Dots', cursive;
 }
-#piechart
-{
+
+#piechart {
     background-color: transparent !important;
 }
