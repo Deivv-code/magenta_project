@@ -18,6 +18,16 @@ public class ReaderCSV {
         dateTime = fetch(0);
 
     }
+    public ReaderCSV()
+
+    {
+
+        sensorNames = fetch(3);
+        values = fetch(4);
+        dateTime = fetch(0);
+
+    }
+
     public ArrayList<String> fetch(int _index) {
         ArrayList<String> values = new ArrayList<>();
         try {
