@@ -13,7 +13,38 @@ google.charts.setOnLoadCallback(drawStuff);
 
 function drawChart() {
 
+ /* var ticks = [];
+  for (var i = 0; i <= 90; i = i + 15) {
+    addTick(i);
+  }
+  function addTick(i) {
+    var place;
+    var digit;
+    if (i === 0) {
+      i = 1;
+    }
+    digit = i.toString().substr(i.toString().length - 1);
+    switch (digit) {
+      case '1':
+        place = 'st';
+        break;
 
+      case '2':
+        place = 'nd';
+        break;
+
+      case '3':
+        place = 'rd';
+        break;
+
+      default:
+        place = 'th';
+    }
+    ticks.push({
+      v: i,
+      f: i + place
+    });
+  }*/
   var data = google.visualization.arrayToDataTable([
 
     ["datatime", "media"],
@@ -122,11 +153,12 @@ function drawChart() {
     },
     vAxis: {
       title: 'Valori (scale of 1-20)',
-      
+     //ticks: ticks
     },
     hAxis: {
       title: 'Media giornaliera',
       format: 'h:mm a',
+      showEveryText : 11,
       viewWindow: {
         min: [7, 30, 0],
         max: [17, 30, 0]
@@ -383,6 +415,7 @@ function drawChart3() {
     hAxis: {
       title: 'Media giornaliera',
       format: 'h:mm a',
+      
       viewWindow: {
         min: [7, 30, 0],
         max: [17, 30, 0]
