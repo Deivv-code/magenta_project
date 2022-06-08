@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" href="./images/logo.PNG" />
+    <title> AirQualityControl </title>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="./script/script.js"></script>
+
+
+
+
+
+</head>
+
+<body id="template">
+
+    <h1 id="site-title">Controllo qualità dell'aria</h1>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                aria-selected="true">Home</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                aria-selected="false">Grafici</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                aria-selected="false">Le nostre centraline</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="jumbotron">
+                <h1 class="display-4">Polveri sottili</h1>
+                <p class="lead">Le polveri sottili sono gli inquinanti più frequenti nelle aree urbane, l'origine di
+                    tali sostanze
+                    può essere naturale o associata all'attività umana. Esse sono dannose per la salute infatti sono
+                    definite
+                    come la forma più pericolosa di inquinamento atmosferico, a causa della loro capacità di penetrare
+                    nei
+                    polmoni e nel sangue, causando quindi attacchi cardiaci, malattie respiratorie, e morte prematura.
+                    In
+                    particolare, risultano essere la sesta causa di morte prematura nel mondo. </p>
+
+                <hr class="my-4">
+                <p>Le polveri sottili sono classificate in base alla loro dimensione: </p>
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="card" style="width: 18rem;">
+                                <h2 class="card-title">PM10</h2>
+                                <img src="./images/pm10.PNG" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Sono le polveri sottili con diametro inferiore a 10 µm
+                                        <a class="btn btn-primary " data-toggle="collapse" href="#multiCollapseExample1"
+                                            role="button" aria-expanded="false"
+                                            aria-controls="multiCollapseExample1">Scopri di
+                                            più</a>
+                                    </p>
+                                    <div class="row">
+                                        <div class="col">
+
+                                            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                                <div>
+                                                    <p>Le PM10 possono essere inalate e penetrare nel tratto superiore
+                                                        dell'apparato respiratorio, dal naso alla laringe.
+                                                        Studi epidemiologici, confermati anche da analisi cliniche e
+                                                        tossicologiche, hanno dimostrato come l'inquinamento atmosferico
+                                                        abbia
+                                                        un impatto sanitario notevole; quanto più è alta la
+                                                        concentrazione di
+                                                        polveri fini nell'aria, infatti, tanto maggiore è l'effetto
+                                                        sulla salute
+                                                        della popolazione. Gli effetti di tipo acuto, sono legati ad una
+                                                        esposizione di breve durata (uno o due giorni) a elevate
+                                                        concentrazioni
+                                                        di polveri contenenti metalli. Questa condizione può provocare
+                                                        infiammazione delle vie respiratorie, come crisi di asma, o
+                                                        inficiare il
+                                                        funzionamento del sistema cardiocircolatorio. Gli effetti di
+                                                        tipo
+                                                        cronico dipendono, invece, da una esposizione prolungata ad alte
+                                                        concentrazioni di polveri e possono determinare sintomi
+                                                        respiratori come
+                                                        tosse e catarro, diminuzione della capacità polmonare e
+                                                        bronchite
+                                                        cronica. Per soggetti sensibili, cioè persone già affette da
+                                                        patologie
+                                                        polmonari e cardiache o asmatiche, è ragionevole temere un
+                                                        peggioramento
+                                                        delle malattie e uno scatenamento dei sintomi tipici del
+                                                        disturbo.</p>
+                                                    <p> <a href="http://www.arpat.toscana.it/temi-ambientali/aria/monitoraggio/inquinanti-monitorati/pm10"
+                                                            target="_blank" class="link">Fonte</a> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+
+                            <div class="card" style="width: 18rem;">
+                                <h2 class="card-title">PM2.5</h2>
+                                <img src="./images/pm25.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Sono polveri sottili con diametro minore a 2,5 µm
+                                        <a class="btn btn-primary " data-toggle="collapse" href="#multiCollapseExample2"
+                                            role="button" aria-expanded="false"
+                                            aria-controls="multiCollapseExample1">Scopri di
+                                            più</a>
+                                    </p>
+                                    <div class="row">
+                                        <div class="col">
+
+                                            <div class="collapse multi-collapse" id="multiCollapseExample2">
+                                                <div>
+                                                    <p>Le PM2,5 possono essere respirate e spingersi nella parte più
+                                                        profonda
+                                                        dell'apparato, fino a raggiungere i bronchi. Le polveri
+                                                        ultrafini
+                                                        potrebbero essere addirittura in grado di filtrare fino agli
+                                                        alveoli e
+                                                        ancora più in profondità nell'organismo e, si sospetta, entrare
+                                                        nel
+                                                        circolo sanguigno e poi nelle cellule.
+                                                        Studi epidemiologici, confermati anche da analisi cliniche e
+                                                        tossicologiche, hanno dimostrato come l'inquinamento atmosferico
+                                                        abbia
+                                                        un impatto sanitario notevole; quanto più è alta la
+                                                        concentrazione di
+                                                        polveri fini nell'aria, infatti, tanto maggiore è l'effetto
+                                                        sulla salute
+                                                        della popolazione. Gli effetti di tipo acuto, sono legati ad una
+                                                        esposizione di breve durata (uno o due giorni) a elevate
+                                                        concentrazioni
+                                                        di polveri contenenti metalli. Questa condizione può provocare
+                                                        infiammazione delle vie respiratorie, come crisi di asma, o
+                                                        inficiare il
+                                                        funzionamento del sistema cardiocircolatorio. Gli effetti di
+                                                        tipo
+                                                        cronico dipendono, invece, da una esposizione prolungata ad alte
+                                                        concentrazioni di polveri e possono determinare sintomi
+                                                        respiratori come
+                                                        tosse e catarro, diminuzione della capacità polmonare e
+                                                        bronchite
+                                                        cronica. Per soggetti sensibili, cioè persone già affette da
+                                                        patologie
+                                                        polmonari e cardiache o asmatiche, è ragionevole temere un
+                                                        peggioramento
+                                                        delle malattie e uno scatenamento dei sintomi tipici del
+                                                        disturbo.</p>
+
+                                                    <p> <a href="http://www.arpat.toscana.it/temi-ambientali/aria/monitoraggio/inquinanti-monitorati/pm2-5"
+                                                            target="_blank" class="link">Fonte</a> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="alert alert-primary" role="alert">
+                Ricordati di passare per il nostro <a href="https://www.magentalab.it/?lang=it" class="alert-link"
+                    target="_blank">sito</a> e per l'applicazione <a href="https://www.airqino.it/" class="alert-link"
+                    target="_blank">Airqino</a>.
+            </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="jumbotron">
+                <h1 class="display-4">Polveri sottili</h1>
+                <p class="lead">Le polveri sottili sono gli inquinanti più frequenti nelle aree urbane, l'origine di
+                    tali sostanze
+                    può essere naturale o associata all'attività umana. Esse sono dannose per la salute infatti sono
+                    definite
+                    come la forma più pericolosa di inquinamento atmosferico, a causa della loro capacità di penetrare
+                    nei
+                    polmoni e nel sangue, causando quindi attacchi cardiaci, malattie respiratorie, e morte prematura.
+                    In
+                    particolare, risultano essere la sesta causa di morte prematura nel mondo. </p>
+                <hr class="my-4">
+                <p id="info">
+                    <p id="info">
+                        <img src="./images/indicator.png" class="indicator"> Limiti di riferimento <img
+                            src="./images/indicator.png" class="indicator"></p>
+
+                </p>
+
+                <div class="card card-body" id="card-collapse">
+                    <table id="tab">
+                        <tr>
+                            <th>Inquinantante</th>
+                            <th>Periodo di mediazione</th>
+                            <th>Limite</th>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="2">PM10(µg/m3)</td>
+                            <td>Media giornaliera</td>
+                            <td>50 µg/m3</td>
+                        </tr>
+
+                        <tr>
+
+                            <td>Media anno civile</td>
+                            <td>40 µg/m3</td>
+                        </tr>
+
+                        <tr>
+                            <td>PM2.5 (µg/m3)</td>
+                            <td>Media anno civile</td>
+                            <td>25 µg/m3</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <hr class="my-4">
+                <p>Ecco alcuni grafici riguardati le polveri sottili:</p>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12" id="graph1">
+
+                        <p class="title-graphs">Grafici media giornaliera dei dati:<div id="curve_chart"
+                                style="width: 100%" class="graphs"></div>
+                        </p>
+
+                        <div id="div-chart">
+                            <div id="curve_chart1" style="width: 100%" class="graphs"></div>
+                        </div>
+                        <div id="curve_chart3" style="width: 100%" class="graphs"></div>
+                        <div id="curve_chart4" style="width: 100%" class="graphs"></div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                        <p class="title-graphs">Grafico giorni superamento limite:</p>
+                        <div id="number_format_chart" style="width: 100%"></div>
+                        <br>
+                        <br>
+                        <br>
+                        <p class="title-graphs">Grafico media temperatura ed umidità:</p>
+                        <div id="curve_chart5" style="width: 100%" class="graphs"></div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="alert alert-primary" role="alert">
+                Ricordati di passare per il nostro <a href="https://www.magentalab.it/?lang=it" class="alert-link"
+                    target="_blank">sito</a> e per l'applicazione <a href="https://www.airqino.it/" class="alert-link"
+                    target="_blank">Airqino</a>.
+            </div>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <div class="jumbotron">
+                <h1 class="display-4">Le nostre centraline</h1>
+                <p class="lead">Le nostre centraline si trovano principalmente in Europa e Africa, e rivelano in tempo
+                    reale i vari dati di:
+                    <ul>
+
+                        <li class="list">L'umidità relativa (<span class="span-list"><b>RH</b></span>)</li>
+                        <li class="list">Temperatura(<span class="span-list"><b>T</b></span>)</li>
+                        <li class="list">PM10 (<span class="span-list"><b>polveri con Ø - 10 µm</b></span>)</li>
+                        <li class="list">PM2,5 (<span class="span-list"><b>polveri con Ø - 2,5 µm</b></span>)</li>
+
+                    </ul>
+                    <p>Per ulteriori informazioni riguardo le nostre centraline <a
+                            href="https://airqino.magentalab.it/#/map?idProjects=7,15,16,17,18,19,20,21,22,23,24,25,26,27,12425092,30645008,39976696,39983189,82825204,85531947,112141162,121216137,132285007,134413912,134414483,134414605,134414760,199670115"
+                            class="link" target="_blank">clicca qui</a></p>
+
+
+
+
+
+
+
+
+
+                </p>
+                <hr class="my-4">
+                <p>Ecco il luogo in cui si trova la centralina dalla quale abbiamo rilevato i dati riguardanti il PM10 e
+                    il PM2.5:</p>
+
+            </div>
+            <div id="googleMap">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.9201881404606!2d11.253089615780157!3d43.774515552594856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3680c756ec1aa8d2!2zNDPCsDQ2JzI4LjIiTiAxMcKwMTUnMTkuMCJF!5e0!3m2!1sit!2sit!4v1654072411159!5m2!1sit!2sit"
+                    width=80%; height=550px style=border:2px; allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="alert alert-primary" role="alert">
+                Ricordati di passare per il nostro <a href="https://www.magentalab.it/?lang=it" class="alert-link"
+                    target="_blank">sito</a> e per l'applicazione <a href="https://www.airqino.it/" class="alert-link"
+                    target="_blank">Airqino</a>.
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</body>
+
+</html>

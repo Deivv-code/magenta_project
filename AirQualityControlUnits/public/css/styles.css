@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Akshar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Andada+Pro:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orelega+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+
+#site-title {
+    color: blue;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    text-shadow: 2px 2px 5px cyan;
+    margin-top: 20px;
+}
+
+#template {
+    background-color: lightblue;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.jumbotron {
+    background-color: transparent !important;
+
+}
+
+.display-4 {
+    font-family: 'Satisfy', cursive !important;
+}
+
+.card-title {
+    color: blue;
+    text-align: center;
+    font-family: 'Akshar', sans-serif;
+    margin-top: 10px;
+
+}
+
+.card {
+    background-color: lightskyblue !important;
+    border-color: dodgerblue !important;
+    border-radius: 40px !important;
+    width: 80% !important;
+}
+
+.card-text {
+    text-align: center !important;
+}
+
+.card-img-top {
+    width: 100% !important;
+    height: 400px !important;
+}
+
+.btn-primary {
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+
+    background-color: yellow !important;
+    color: black !important;
+}
+
+.link {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 20px;
+}
+
+.link:hover {
+    color: yellow;
+}
+
+.nav {
+    font-size: 30px;
+    font-family: 'Andada Pro', serif;
+}
+
+table,
+td,
+tr,
+th {
+    border: 1px solid black;
+    margin-left: 10px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+table {
+    width: 70%;
+}
+
+th {
+    background-color: lightskyblue;
+
+}
+
+td:hover {
+    background-color: lightgoldenrodyellow;
+}
+
+#info {
+    font-family: 'Orelega One', cursive;
+    text-align: center;
+    font-size: 30px;
+    text-shadow: 2px 2px 5px cyan;
+}
+
+td {
+    background-color: lightcyan;
+}
+
+.collapse {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#card-collapse {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    background-color: transparent !important;
+    border-radius: 0px !important;
+    border-color: transparent !important;
+    width: 70% !important;
+}
+
+.indicator {
+    width: 2%;
+    height: 2%;
+    opacity: 0.5;
+}
+
+.indicator:hover {
+
+    opacity: 1;
+}
+
+#googleMap {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 100px;
+
+
+}
+
+.list {
+    font-size: 15px;
+}
+
+.span-list {
+    font-style: italic;
+
+}
+
+.col-sm-12 {
+    margin-top: 10px !important;
+    font-size: 1rem;
+}
+
+.alert-link {
+    color: blue !important;
+
+}
+
+.alert-link:hover {
+    color: yellow !important;
+}
+
+.graphs {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    margin-bottom: 10px !important;
+    margin-top: 0px !important;
+
+}
+
+.graphs-div {
+    width: 100%;
+
+}
+
+
+
+.title-graphs {
+    font-family: 'Zen Dots', cursive;
+ 
+
+}
+
