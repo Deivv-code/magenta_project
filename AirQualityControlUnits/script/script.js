@@ -141,7 +141,7 @@ function drawChart() {
     ["2022-05-19", 11.699999945504326],
   ]);
 
-
+  //chartType = ColumnChart;
   var options = {
     title: 'Grafico valori temperatura',
     curveType: 'function',
@@ -151,6 +151,10 @@ function drawChart() {
       position: 'bottom',
 
     },
+  /*  series: {
+      0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
+      1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
+    },*/
     vAxis: {
       title: 'Valori (scale of 1-20)',
      //ticks: ticks
