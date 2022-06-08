@@ -152,6 +152,10 @@ function drawChart() {
 
     },
   /*  series: {
+      0: {targetAxisIndex: 0},
+      1: {targetAxisIndex: 1}
+    },
+  */  /*series: {
       0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
       1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
     },*/
@@ -163,6 +167,7 @@ function drawChart() {
       title: 'Media giornaliera',
       format: 'h:mm a',
       showEveryText : 11,
+      //color: '#333', minSpacing: 20,
       viewWindow: {
         min: [7, 30, 0],
         max: [17, 30, 0]
@@ -586,8 +591,11 @@ function drawStuff() {
         count: 4,
 
       }
-    }
+    },
   };
+
+
+  
 
   var chart = new google.visualization.ColumnChart(document.getElementById('number_format_chart'));
   chart.draw(data, options);
