@@ -38,9 +38,9 @@ public class Main {
 
        // System.out.println(b);
 
-        // print(date, values);
+         print(date, values);
 
-       printTRH(date, valuesT,valuesRH );
+      // printTRH(date, valuesT,valuesRH );
 
         //printDate(date);
 
@@ -53,8 +53,8 @@ public class Main {
 
         for (int i = 0; i < date.size(); i++) {
             string = "[" +
-                    "\"" + date.get(i) + "\"" + ","  +
-                    values.get(i) +
+                    "\"" + values.get(i) + "\"" + ","  +
+                    date.get(i) +
                     "], ";
 
             System.out.println(string);
