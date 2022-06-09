@@ -1,3 +1,6 @@
+import javax.swing.text.html.Option;
+import javax.xml.crypto.Data;
+import javax.xml.transform.stream.StreamResult;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -9,9 +12,15 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.OptionalDouble;
+import java.util.stream.DoubleStream;
+import java.util.stream.Stream;
 
 public class ParserCSV {
     private final File file;
+    private ArrayList <DataReader> listDto = new ArrayList<>();
+
 
     public ParserCSV(String _fileName) {
         String currentDirectory = System.getProperty("user.dir");
@@ -24,6 +33,27 @@ public class ParserCSV {
     }
 
 
+    public  ArrayList<OptionalDouble> getAverage(Type _sensorName)
+    {
+        OptionalDouble av;
+        int counter= 0;
+
+        ArrayList<OptionalDouble> average = new ArrayList<>();
+
+              for(int i =0; i<listDto.size();i++)
+              {
+                if(_sensorName ==listDto.get(i).getSensortype())
+                {
+                    DoubleStream stream = DoubleStream.of(listDto.get(i).getValue());
+                    av = stream.average();
+                    average.add(av);
+                }
+
+              }
+
+
+    return average;
+    }
 
     public ArrayList<Double> getAverage(String _sensorName) {
         //ArrayList<String> sensorNames = fetch(3);
@@ -79,7 +109,7 @@ public class ParserCSV {
         return averages;
     }
 
-    public  Double AnnualAverage(String _sensorName)
+    public  Double AnnualAverage(Type _sensorName)
     {
         ReaderCSV a = new ReaderCSV(this);
 
@@ -87,13 +117,13 @@ public class ParserCSV {
         int counter = 0;
         double average = 0;
 
-        for (int i=0;i<a.getSensorNames().size();i++)
+        for (int i=0;i<listDto.size();i++)
         {
-            if (a.getSensorNames().get(i).equals(_sensorName))//(sensorNames.get(i).equals(_sensorName))
+            if (listDto.get(i).getSensortype() == _sensorName)//(sensorNames.get(i).equals(_sensorName))
             {
-                for (int j = 0; j<a.getValues().size();i++)
+                for (int j = 0; j<listDto.size();i++)
                 {
-                    average += Double.parseDouble(a.getValues().get(j));
+                    average += listDto.get(i).getValue();
                     counter++;
                 }
                 average = average /counter;

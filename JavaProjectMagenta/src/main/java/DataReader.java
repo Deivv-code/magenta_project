@@ -13,6 +13,7 @@ public class DataReader {
         this.datetime = datetime;
         this.value = value;
         this.sensortype = sensortype;
+        this.ReadSave();
     }
 
     public Date getDatetime() {

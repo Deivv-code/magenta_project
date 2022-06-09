@@ -36,7 +36,10 @@ public class Main {
 
       int b = parser.LimitExceeded("RH");
 
-        System.out.println(b);
+       // System.out.println(b);
+
+        double c = parser.AnnualAverage(Type.PM10);
+        System.out.println(c);
 
        //  print(date, values);
 
