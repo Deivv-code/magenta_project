@@ -9,7 +9,7 @@ public class Main {
         ParserCSV parser = new ParserCSV(fileName);
 
         ReaderCSV a = new ReaderCSV(parser);
-        ArrayList<Double> values = parser.getAverage("T");
+        ArrayList<Double> values = parser.getAverage("RH");
 
         ArrayList<Double> valuesT = parser.getAverage("T");
         ArrayList <Double> valuesRH = parser.getAverage("RH");
@@ -38,10 +38,10 @@ public class Main {
 
        // System.out.println(b);
 
-        double c = parser.AnnualAverage("PM10");
-        System.out.println(c);
+        double c = parser.OneAverage("PM10");
+       // System.out.println(c);
 
-       //  print(date, values);
+         print(date, values, parser,"RH");
 
       // printTRH(date, valuesT,valuesRH );
 
@@ -51,13 +51,13 @@ public class Main {
        // System.out.println(c);
     }
 
-    public static void print(ArrayList<String> date, ArrayList<Double> values) {
+    public static void print(ArrayList<String> date, ArrayList<Double> values, ParserCSV parser,String sAverage) {
         String string = "";
 
         for (int i = 0; i < date.size(); i++) {
             string = "[" +
-                    "\"" + values.get(i) + "\"" + ","  +
-                    date.get(i) +
+                    "\"" +  date.get(i)  + "\"" + ","  +
+                   values.get(i) + "," + parser.OneAverage(sAverage) +
                     "], ";
 
             System.out.println(string);

@@ -157,6 +157,18 @@ public class ParserCSV {
         }
         return average/counter;
     }
+
+    public Double OneAverage(String s)
+    {
+        double average = 0;
+        ArrayList <Double> listAV = this.getAverage(s);
+        for (int i = 0; i<listAV.size();i++)
+        {
+            average += listAV.get(i);
+        }
+
+        return average/listAV.size();
+    }
     public String getDateTime(int i)
     {
         ReaderCSV a = new ReaderCSV(this);
