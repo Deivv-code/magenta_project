@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,7 +13,7 @@ public class DataReader {
         this.datetime = datetime;
         this.value = value;
         this.sensortype = sensortype;
-
+        this.ReadSave();
     }
 
     public Date getDatetime() {
@@ -63,8 +62,8 @@ public class DataReader {
 
         return newRow;
     }
- 
 
-    }
+
+
 
 }

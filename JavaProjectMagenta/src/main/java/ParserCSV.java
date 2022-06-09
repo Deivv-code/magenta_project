@@ -109,7 +109,7 @@ public class ParserCSV {
         return averages;
     }
 
-    public  Double AnnualAverage(Type _sensorName)
+   /* public  Double AnnualAverage(Type _sensorName)
     {
         ReaderCSV a = new ReaderCSV(this);
 
@@ -133,7 +133,30 @@ public class ParserCSV {
         }
         return average;
     }
+*/
 
+    public Double AnnualAverage(String _sensorName)
+    {
+        ReaderCSV a = new ReaderCSV(this);
+        int counter = 0;
+        double average = 0;
+        double temp = 0;
+        for (int i = 0;i<a.getSensorNames().size();i++)
+        {
+            if (a.getSensorNames().get(i).equals(_sensorName))
+            {
+                for(int j = 0; j<a.getValues().size();j++)
+                {
+                 temp = Double.valueOf(a.getValues().get(j));
+                 average += temp;
+                 counter++;
+
+                }
+        }
+
+        }
+        return average/counter;
+    }
     public String getDateTime(int i)
     {
         ReaderCSV a = new ReaderCSV(this);

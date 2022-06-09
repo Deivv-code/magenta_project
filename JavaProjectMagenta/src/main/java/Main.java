@@ -38,7 +38,7 @@ public class Main {
 
        // System.out.println(b);
 
-        double c = parser.AnnualAverage(Type.PM10);
+        double c = parser.AnnualAverage("PM10");
         System.out.println(c);
 
        //  print(date, values);
