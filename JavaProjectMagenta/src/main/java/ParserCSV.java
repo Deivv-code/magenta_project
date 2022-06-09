@@ -187,7 +187,7 @@ public class ParserCSV {
 
 
             if (_sensorName.equals("PM10")) {
-                limit = 15;
+                limit = 14.450451940035277;
 
 
                 for (int j = 0; j < average.size(); j++) {
@@ -198,7 +198,7 @@ public class ParserCSV {
             }
             else if (_sensorName.equals("PM2.5"))
             {
-                limit = 12.2;
+                limit = 12.016062409812399;
 
 
                 for (int j =0 ; j<average.size() ;j++)
@@ -211,7 +211,7 @@ public class ParserCSV {
             }
             else if (_sensorName.equals("T"))
             {
-                limit = 11.2;
+                limit = 11.096315057263205;
 
                 for (int j = 0; j<average.size();j++)
                 {
@@ -223,7 +223,7 @@ public class ParserCSV {
             }
             else if (_sensorName.equals("RH"))
             {
-                limit = 99.89;
+                limit = 99.88732793615938;
 
                 for (int j = 0; j<average.size();j++)
                 {
