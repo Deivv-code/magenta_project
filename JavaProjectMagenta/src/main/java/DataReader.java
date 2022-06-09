@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +14,7 @@ public class DataReader {
         this.datetime = datetime;
         this.value = value;
         this.sensortype = sensortype;
-        this.ReadSave();
+
     }
 
     public Date getDatetime() {
@@ -29,7 +30,7 @@ public class DataReader {
     }
 
 
-    public  void ReadSave() {
+    public ArrayList <DataReader> ReadSave() {
 
      ParserCSV b = new ParserCSV("air_quality_data.csv ");
         ReaderCSV a = new ReaderCSV(b);
@@ -60,6 +61,9 @@ public class DataReader {
         }
 
 
+        return newRow;
+    }
+ 
 
     }
 
