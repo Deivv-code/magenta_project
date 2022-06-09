@@ -14,9 +14,10 @@
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+    
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="./script/script.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
 
 
 
@@ -258,6 +259,7 @@
                         </div>
                         <div id="curve_chart3" style="width: 100%" class="graphs"></div>
                         <div id="curve_chart4" style="width: 100%" class="graphs"></div>
+                    
                     </div>
 
                     <div class="col-md-6 col-sm-12">
@@ -267,7 +269,12 @@
                         <br>
                         <br>
                         <p class="title-graphs">Grafico media temperatura ed umidità:</p>
+                     
+                        
                         <div id="curve_chart5" style="width: 100%" class="graphs"></div>
+                        <br>
+                        <canvas id="myChart" width="400" height="400"></canvas>
+                        
                     </div>
 
                 </div>

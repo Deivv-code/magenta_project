@@ -1,16 +1,15 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class DTO {
+public class DataReader {
     private Date datetime;
     private double value;
     private Type sensortype;
 
-    public DTO(Date datetime, double value, Type sensortype) {
+    public DataReader(Date datetime, double value, Type sensortype) {
         this.datetime = datetime;
         this.value = value;
         this.sensortype = sensortype;
@@ -29,11 +28,11 @@ public class DTO {
     }
 
 
-    public static void main(String[] args) {
+    public  void ReadSave() {
 
      ParserCSV b = new ParserCSV("air_quality_data.csv ");
         ReaderCSV a = new ReaderCSV(b);
-     ArrayList <DTO> newRow = new ArrayList<>();
+     ArrayList <DataReader> newRow = new ArrayList<>();
      ArrayList<String> _datetime = a.fetch(0);
      ArrayList<String> _value = a.fetch(4);
      ArrayList<String> _sensortype = a.fetch(3);
@@ -51,7 +50,7 @@ public class DTO {
                 date = formatter.parse(_datetime.get(i));
                 sensortype = Type.valueOf(_sensortype.get(i));
 
-                DTO addToList = new DTO (date,value,sensortype);
+                DataReader addToList = new DataReader (date,value,sensortype);
                 newRow.add(addToList);
                 i++;
             }
