@@ -49,6 +49,8 @@ public class Main {
 
         printJSON(date,values,parser,"RH");
 
+       //printDateJSON(date);
+      //  printTRHJSON(date, valuesT,valuesRH );
        // printDate(date);
 
        // double c = parser.AnnualAverage("T");
