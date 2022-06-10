@@ -36,13 +36,14 @@ public class Main {
         date.add(Alldates.get(Alldates.size() - 1));
 
 
-      int b = parser.LimitExceeded("PM2.5 ");
-
-        //System.out.println(b);
 
         double c = parser.OneAverage("PM10");
        // System.out.println(c);
 
+
+        int b = parser.LimitExceeded("PM10");
+
+      //  System.out.println(b);
        //  print(date, values, parser,"RH");
 
       // printTRH(date, valuesT,valuesRH );
