@@ -720,7 +720,7 @@ function drawChart5() {
 
   ])
   var options5 = {
-    title: 'Grafico valori umidità',
+    title: 'Grafico valori umidità e temperatura',
 
     curveType: 'function',
     legend: {
