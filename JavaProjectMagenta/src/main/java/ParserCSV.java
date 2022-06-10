@@ -1,3 +1,5 @@
+import org.json.JSONArray;
+
 import javax.swing.text.html.Option;
 import javax.xml.crypto.Data;
 import javax.xml.transform.stream.StreamResult;
@@ -237,6 +239,16 @@ public class ParserCSV {
 
 
         return counter;
+    }
+    public JSONArray ArrayToJSONArray(ArrayList <DataReader> a)
+    {
+        JSONArray list = new JSONArray(a);
+        return list;
+    }
+    public JSONArray ArrayToJSONArray()
+    {
+        JSONArray list = new JSONArray(listDto);
+        return list;
     }
 }
 

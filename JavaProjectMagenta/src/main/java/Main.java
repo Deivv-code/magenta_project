@@ -1,3 +1,5 @@
+import org.json.JSONArray;
+
 import javax.naming.LimitExceededException;
 import java.util.ArrayList;
 
@@ -36,7 +38,7 @@ public class Main {
 
       int b = parser.LimitExceeded("PM2.5 ");
 
-        System.out.println(b);
+        //System.out.println(b);
 
         double c = parser.OneAverage("PM10");
        // System.out.println(c);
@@ -44,6 +46,8 @@ public class Main {
        //  print(date, values, parser,"RH");
 
       // printTRH(date, valuesT,valuesRH );
+
+        printJSON(date,values,parser,"RH");
 
        // printDate(date);
 
@@ -64,6 +68,18 @@ public class Main {
         }
 
 
+    }
+    public static void printJSON(ArrayList<String> date, ArrayList<Double> values, ParserCSV parser,String sAverage)
+    {
+        JSONArray list = new JSONArray();
+        for (int i=0;i<date.size();i++)
+        {
+            list.put(date.get(i));
+            list.put(values.get(i));
+            list.put(parser.OneAverage(sAverage));
+
+        }
+        System.out.println(list);
     }
 
     public static void printTRH(ArrayList<String> date, ArrayList<Double> valuesT, ArrayList<Double> valuesRH) {
