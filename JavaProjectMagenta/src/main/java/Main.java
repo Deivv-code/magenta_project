@@ -95,6 +95,17 @@ public class Main {
 
         }
     }
+    public static void printTRHJSON(ArrayList<String> date, ArrayList<Double> valuesT, ArrayList<Double> valuesRH)
+    {
+        JSONArray list = new JSONArray();
+        for (int i=0;i<date.size();i++)
+        {
+            list.put(date.get(i));
+            list.put(valuesT.get(i));
+            list.put(valuesRH.get(i));
+        }
+        System.out.println(list);
+    }
     public static void printDate(ArrayList <String> date)
     {
         String a = "";
@@ -105,5 +116,16 @@ public class Main {
         }
 
     }
+
+    public static void printDateJSON(ArrayList <String> date)
+    {
+        JSONArray list = new JSONArray();
+        for (int i=0;i<date.size();i++)
+        {
+            list.put(date.get(i));
+        }
+        System.out.println(list);
+    }
+
 
 }
