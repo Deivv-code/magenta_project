@@ -24,9 +24,11 @@ public class ParserCSV {
     private ArrayList <DataReader> listDto = new ArrayList<>();
 
 
+
     public ParserCSV(String _fileName) {
         String currentDirectory = System.getProperty("user.dir");
         file = new File(currentDirectory + "\\files\\" + _fileName);
+
     }
 
     public File getFile()
@@ -37,8 +39,10 @@ public class ParserCSV {
 
     public  ArrayList<OptionalDouble> getAverage(Type _sensorName)
     {
+        ReaderCSV reader = new ReaderCSV(this);
+        listDto = reader.fetch();
         OptionalDouble av;
-        int counter= 0;
+
 
         ArrayList<OptionalDouble> average = new ArrayList<>();
 
@@ -57,11 +61,12 @@ public class ParserCSV {
     return average;
     }
 
-    public ArrayList<Double> getAverage(String _sensorName) {
-        //ArrayList<String> sensorNames = fetch(3);
-       // ArrayList<String> values = fetch(4);
+   public ArrayList<Double> getAverage(String _sensorName) {
+        ReaderCSV bo = new ReaderCSV(this);
+        ArrayList<String> sensorNames = bo.fetch(3);
+        ArrayList<String> values = bo.fetch(4);
 
-        //ArrayList <String> datetimes = fetch(0);
+        ArrayList <String> datetimes = bo.fetch(0);
         ReaderCSV a = new ReaderCSV(this);
 
         //change all ArrayList that use fetch with a.get
@@ -69,9 +74,9 @@ public class ParserCSV {
         // process date
 
         ArrayList<String> date = new ArrayList<>();
-        for (String data : a.getDateTime()/*dateTimes*/) { date.add(data.split(" ")[0]); }
+        for (String data : a.getDateTime()) { date.add(data.split(" ")[0]); }
 
-        ArrayList<Double> averages = new ArrayList<>();
+       ArrayList<Double> averages = new ArrayList<>();
         int counter = 0;
         ArrayList<Integer> indexes = new ArrayList<>();
         for (int i=1; i<date.size(); i++) {
@@ -111,54 +116,9 @@ public class ParserCSV {
         return averages;
     }
 
-   /* public  Double AnnualAverage(Type _sensorName)
-    {
-        ReaderCSV a = new ReaderCSV(this);
 
 
-        int counter = 0;
-        double average = 0;
 
-        for (int i=0;i<listDto.size();i++)
-        {
-            if (listDto.get(i).getSensortype() == _sensorName)//(sensorNames.get(i).equals(_sensorName))
-            {
-                for (int j = 0; j<listDto.size();i++)
-                {
-                    average += listDto.get(i).getValue();
-                    counter++;
-                }
-                average = average /counter;
-
-            }
-
-        }
-        return average;
-    }
-*/
-
-    public Double AnnualAverage(String _sensorName)
-    {
-        ReaderCSV a = new ReaderCSV(this);
-        int counter = 0;
-        double average = 0;
-        double temp = 0;
-        for (int i = 0;i<a.getSensorNames().size();i++)
-        {
-            if (a.getSensorNames().get(i).equals(_sensorName))
-            {
-                for(int j = 0; j<a.getValues().size();j++)
-                {
-                 temp = Double.valueOf(a.getValues().get(j));
-                 average += temp;
-                 counter++;
-
-                }
-        }
-
-        }
-        return average/counter;
-    }
 
     public Double OneAverage(String s)
     {
@@ -171,12 +131,7 @@ public class ParserCSV {
 
         return average/listAV.size();
     }
-    public String getDateTime(int i)
-    {
-        ReaderCSV a = new ReaderCSV(this);
-        ArrayList<String> dateTimes = a.getDateTime();
-        return dateTimes.get(i);
-    }
+
     public int LimitExceeded(String _sensorName)
     {
        // ArrayList<String> sensorNames = fetch(3);
