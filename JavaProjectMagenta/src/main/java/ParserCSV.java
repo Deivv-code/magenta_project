@@ -1,23 +1,9 @@
 import org.json.JSONArray;
-
-import javax.swing.text.html.Option;
-import javax.xml.crypto.Data;
-import javax.xml.transform.stream.StreamResult;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.OptionalDouble;
 import java.util.stream.DoubleStream;
-import java.util.stream.Stream;
+
 
 public class ParserCSV {
     private final File file;
