@@ -47,6 +47,9 @@ google.charts.load('current', {
   data.addColumn('number', 'Temperature');
   data.addColumn('number', 'Humidity');
 
+
+
+
   // after the chart draws, wait 60 seconds, get more data
   google.visualization.events.addListener(chart, 'ready', function () {
     window.setTimeout(getData, 60000);
