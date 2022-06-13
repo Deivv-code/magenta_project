@@ -12,10 +12,10 @@ public class Main {
         ParserCSV parser = new ParserCSV(fileName);
 
         ReaderCSV a = new ReaderCSV(parser);
-       /* ArrayList<Double> values = parser.getAverage("RH");
+        ArrayList<Double> values = parser.getAverage("RH");
 
         ArrayList<Double> valuesT = parser.getAverage("T");
-        ArrayList <Double> valuesRH = parser.getAverage("RH"); */
+        ArrayList <Double> valuesRH = parser.getAverage("RH");
         // process dateTimes
 
 
@@ -38,13 +38,14 @@ public class Main {
         date.add(Alldates.get(Alldates.size() - 1));
 
 
-        ArrayList < OptionalDouble > average = new ArrayList<>();
+     /*   ArrayList < OptionalDouble > average = new ArrayList<>();
         average = parser.getAverage(Type.PM10);
 
         for (int i = 0; i< average.size(); i++)
         {
             System.out.println(average.get(i));
         }
+*/
 
        // double c = parser.OneAverage("PM10");
        // System.out.println(c);
@@ -57,7 +58,7 @@ public class Main {
 
       // printTRH(date, valuesT,valuesRH );
 
-     //   printJSON(date,values,parser,"RH");
+        printJSON(date,values,parser,"RH");
 
        //printDateJSON(date);
       //  printTRHJSON(date, valuesT,valuesRH );

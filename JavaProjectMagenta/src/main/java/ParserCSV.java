@@ -41,31 +41,36 @@ public class ParserCSV {
     {
         ReaderCSV reader = new ReaderCSV(this);
         listDto = reader.fetch();
+        ArrayList<Integer> indexes = new ArrayList<>();
         OptionalDouble av;
         DoubleStream stream;
-
+        double temp = 0;
+        int counter = 0 ;
 
         ArrayList<OptionalDouble> average = new ArrayList<>();
 
               for(int i =0; i<listDto.size();i++)
               {
-                if(_sensorName == listDto.get(i).getSensortype())
-                {
-                    for(int j = 0 ; j<listDto.size();j++)
-                    {
-                        if(listDto.get(i).getDatetime().equals( listDto.get(i+1).getDatetime()))
-                        {
-                             stream = DoubleStream.of(listDto.get(i).getValue());
-                             av = stream.average();
-                             average.add(av);
-                        }
+              if (listDto.get(i).getSensortype() == _sensorName)
+              {
+                  for (int j = 1; i<listDto.size();j++)
+                  {
+                      if (listDto.get(i).getDatetime() == listDto.get(j).getDatetime())
+                      {
+                          indexes.add(i);
+                      }
+                  }
+              }
 
-
-                    }
-
-                }
 
               }
+        for (int k = 0;k<indexes.size();k++ )
+        {
+            stream = DoubleStream.of(listDto.get(k).getValue());
+            av = stream.average();
+            average.add(av);
+        }
+
 
 
     return average;
