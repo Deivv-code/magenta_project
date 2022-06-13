@@ -148,6 +148,62 @@ public class ParserCSV {
     }
 
 
+
+   /* public int LimitExceeded(Type t)
+    {
+        ReaderCSV a = new ReaderCSV(this);
+        ArrayList <OptionalDouble> average = getAverage(t);
+        OptionalDouble limit;
+        int counter=0;
+        String s = t.toString();
+        if(t == Type.PM10)
+        {
+            limit = OptionalDouble.of(this.OneAverage(s));//passare il type);
+            for (int i = 0; i<average.size();i++)
+            {
+                if(average.get(i)>limit)
+                {
+                   counter++;
+                }
+            }
+        }
+           if(t == Type.PM2_5)
+        {
+            limit = OptionalDouble.of(this.OneAverage(s));//passare il type);
+            for (int i = 0; i<average.size();i++)
+            {
+                if(average.get(i)>limit)
+                {
+                   counter++;
+                }
+            }
+        }
+           if(t == Type.T)
+        {
+            limit = OptionalDouble.of(this.OneAverage(s));//passare il type);
+            for (int i = 0; i<average.size();i++)
+            {
+                if(average.get(i)>limit)
+                {
+                   counter++;
+                }
+            }
+        }
+           if(t == Type.RH)
+        {
+            limit = OptionalDouble.of(this.OneAverage(s));//passare il type);
+            for (int i = 0; i<average.size();i++)
+            {
+                if(average.get(i)>limit)
+                {
+                   counter++;
+                }
+            }
+        }
+        return counter;
+    }
+    */
+
     public int LimitExceeded(String _sensorName)
     {
        // ArrayList<String> sensorNames = fetch(3);
