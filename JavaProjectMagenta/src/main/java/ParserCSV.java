@@ -147,6 +147,20 @@ public class ParserCSV {
         return average/listAV.size();
     }
 
+    /*
+    public OptionalDouble OneAverage(Type n)
+    {
+           double average = 0;
+        ArrayList <Double> listAV = this.getAverage(n);
+        for (int i = 0; i<listAV.size();i++)
+        {
+            average += listAV.get(i);
+        }
+
+        return average/listAV.size();
+    }
+
+     */
 
 
    /* public int LimitExceeded(Type t)
