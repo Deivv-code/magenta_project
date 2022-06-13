@@ -30,7 +30,7 @@ public class ParserCSV {
         listDto = reader.fetch();
 
         OptionalDouble av;
-        DoubleStream stream = DoubleStream.of(0);
+        DoubleStream stream;
 
 
         ArrayList<OptionalDouble> average = new ArrayList<>();
@@ -42,11 +42,11 @@ public class ParserCSV {
                         if(listDto.get(i).getDatetime().compareTo(listDto.get(i+1).getDatetime())== 0)
                         {
                             stream = DoubleStream.of(listDto.get(i).getValue());
-
+                            av = stream.average();
+                            average.add(av);
 
                         }
-                    av = stream.average();
-                    average.add(av);
+
                 }
               }
 

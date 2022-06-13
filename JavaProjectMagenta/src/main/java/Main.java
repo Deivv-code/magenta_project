@@ -38,7 +38,7 @@ public class Main {
         date.add(Alldates.get(Alldates.size() - 1));
 
 
-     /*   ArrayList < OptionalDouble > average = new ArrayList<>();
+   /*    ArrayList < OptionalDouble > average = new ArrayList<>();
         average = parser.getAverage(Type.PM10);
 
         for (int i = 0; i< average.size(); i++)
