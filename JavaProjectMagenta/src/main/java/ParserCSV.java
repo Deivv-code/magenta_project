@@ -42,17 +42,27 @@ public class ParserCSV {
         ReaderCSV reader = new ReaderCSV(this);
         listDto = reader.fetch();
         OptionalDouble av;
+        DoubleStream stream;
 
 
         ArrayList<OptionalDouble> average = new ArrayList<>();
 
               for(int i =0; i<listDto.size();i++)
               {
-                if(_sensorName ==listDto.get(i).getSensortype())
+                if(_sensorName == listDto.get(i).getSensortype())
                 {
-                    DoubleStream stream = DoubleStream.of(listDto.get(i).getValue());
-                    av = stream.average();
-                    average.add(av);
+                    for(int j = 0 ; j<listDto.size();j++)
+                    {
+                        if(listDto.get(i).getDatetime().equals( listDto.get(i+1).getDatetime()))
+                        {
+                             stream = DoubleStream.of(listDto.get(i).getValue());
+                             av = stream.average();
+                             average.add(av);
+                        }
+
+
+                    }
+
                 }
 
               }
@@ -131,6 +141,7 @@ public class ParserCSV {
 
         return average/listAV.size();
     }
+
 
     public int LimitExceeded(String _sensorName)
     {
