@@ -42,7 +42,7 @@ public class ParserCSV {
         //must refactor this method
         ReaderCSV reader = new ReaderCSV(this);
         listDto = reader.fetch();
-        ArrayList<Integer> indexes = new ArrayList<>();
+
         OptionalDouble av;
         DoubleStream stream = DoubleStream.of(0);
 
@@ -143,6 +143,7 @@ public class ParserCSV {
     /*
     public OptionalDouble OneAverage(Type n)
     {
+    listDto = reader.fetch();
            double average = 0;
         ArrayList <Double> listAV = this.getAverage(n);
         for (int i = 0; i<listAV.size();i++)
@@ -158,6 +159,7 @@ public class ParserCSV {
 
    /* public int LimitExceeded(Type t)
     {
+        listDto = reader.fetch();
         ReaderCSV a = new ReaderCSV(this);
         ArrayList <OptionalDouble> average = getAverage(t);
         OptionalDouble limit;

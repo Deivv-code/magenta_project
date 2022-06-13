@@ -1,0 +1,85 @@
+
+
+
+A LITTLE EXAMPLE:
+
+$.each(jsonData, function (index, row) {
+  data.addRow([
+    new Date(row.insert_date),
+    parseFloat(row.temp),
+    parseFloat(row.hum)
+  ]);
+});
+
+
+
+
+
+google.charts.load('current', {
+  packages: ['corechart']
+}).then(function () {
+  // create chart
+  var container = $('#chart_div').get(0);
+  var chart = new google.visualization.LineChart(container);
+  var options = {
+    chartArea: {
+      height: '100%',
+      width: '100%',
+      top: 60,
+      left: 60,
+      right: 60,
+      bottom: 60
+    },
+    hAxis: {
+      format: 'M/d HH:mm:ss',
+      title: 'Time'
+    },
+    height: '100%',
+    legend: {
+      position: 'top'
+    },
+    width: '100%'
+  };
+
+  // create data table
+  var data = new google.visualization.DataTable();
+  data.addColumn('datetime', 'x');
+  data.addColumn('number', 'Temperature');
+  data.addColumn('number', 'Humidity');
+
+  // after the chart draws, wait 60 seconds, get more data
+  google.visualization.events.addListener(chart, 'ready', function () {
+    window.setTimeout(getData, 60000);
+  });
+
+  getData();
+  function getData() {
+    $.ajax({
+      url: 'data.php',
+      dataType: 'json'
+    }).done(function (jsonData) {
+      loadData(jsonData);
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+      var jsonData = [{"id":"1","temp":"24.40","hum":"28.30","insert_date":"2018-03-09 13:28:49"},{"id":"2","temp":"24.50","hum":"28.60","insert_date":"2018-03-09 13:29:59"},{"id":"2","temp":"24.50","hum":"28.60","insert_date":"2018-03-09 13:31:10"}];
+      loadData(jsonData);
+    });
+  }
+
+  function loadData(jsonData) {
+    // load json data
+    $.each(jsonData, function (index, row) {
+      data.addRow([
+        new Date(row.insert_date),
+        parseFloat(row.temp),
+        parseFloat(row.hum)
+      ]);
+    });
+    drawChart();
+  }
+
+  $(window).resize(drawChart);
+  function drawChart() {
+    // draw chart
+    chart.draw(data, options);
+  }
+});
