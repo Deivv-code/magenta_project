@@ -68,6 +68,8 @@ public class Main {
        // System.out.println(c);
     }
 
+
+    //Eliminate the normal print and keep only the JSON print
    public static void print(ArrayList<String> date, ArrayList<Double> values, ParserCSV parser,String sAverage) {
         String string = "";
 
