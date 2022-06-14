@@ -1,6 +1,11 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;
 
 import javax.naming.LimitExceededException;
+import javax.swing.*;
+import java.io.Console;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.OptionalDouble;
 
@@ -58,7 +63,9 @@ public class Main {
 
       // printTRH(date, valuesT,valuesRH );
 
-        printJSON(date,values,parser,"RH");
+        ArrayList<DataReader> listD = new ArrayList<>();
+        listD = a.fetch();
+        printJSON(listD);
 
        //printDateJSON(date);
       //  printTRHJSON(date, valuesT,valuesRH );
@@ -98,6 +105,15 @@ public class Main {
         }
         System.out.println(list);
     }
+    public static void printJSON(ArrayList<DataReader> listD)
+    {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.writeValue(new File("target/list.json"),listD);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static void printTRH(ArrayList<String> date, ArrayList<Double> valuesT, ArrayList<Double> valuesRH) {
         String string = "";
@@ -134,15 +150,19 @@ public class Main {
 
     }
 
-    public static void printDateJSON(ArrayList <String> date)
+
+    public static void printAverageJson(ParserCSV parser, Type T)
     {
-        JSONArray list = new JSONArray();
-        for (int i=0;i<date.size();i++)
-        {
-            list.put(date.get(i));
+        ArrayList <OptionalDouble> average = new ArrayList<>();
+        average = parser.getAverage(T);
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.writeValue(new File("target/listAverage.json"),average);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        System.out.println(list);
     }
+
 
 
 }
