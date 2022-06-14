@@ -72,7 +72,7 @@ public ReaderCSV(ParserCSV parser)
         return listD;
     }
 
-    //use this class to not use too much times fetch.
+
 
     public ArrayList <String> getSensorNames()
     {

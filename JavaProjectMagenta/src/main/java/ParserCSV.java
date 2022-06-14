@@ -57,10 +57,9 @@ public class ParserCSV {
 
    public ArrayList<Double> getAverage(String _sensorName) {
         ReaderCSV bo = new ReaderCSV(this);
-        ArrayList<String> sensorNames = bo.fetch(3);
-        ArrayList<String> values = bo.fetch(4);
 
-        ArrayList <String> datetimes = bo.fetch(0);
+
+
         ReaderCSV a = new ReaderCSV(this);
 
         //change all ArrayList that use fetch with a.get
@@ -79,8 +78,8 @@ public class ParserCSV {
                 if (!(date.get(i).equals( date.get(i+1) )) ) {
                     double average = 0;
                     for (int j=0; j<indexes.size(); j++) {
-                        if (a.getSensorNames().get(j).equals(_sensorName)){ //sensorNames.get(j).equals(_sensorName)) {
-                            average += Double.parseDouble( a.getValues().get(j));//values.get(j) );
+                        if (a.getSensorNames().get(j).equals(_sensorName)){
+                            average += Double.parseDouble( a.getValues().get(j));
                             counter ++;
                         }
                     }
@@ -94,8 +93,8 @@ public class ParserCSV {
 
                 double average = 0;
                 for (int j=0; j<indexes.size(); j++) {
-                    if (a.getSensorNames().get(j).equals(_sensorName)){ //sensorNames.get(j).equals(_sensorName)) {
-                        average += Double.parseDouble( a.getValues().get(j));//values.get(j) );
+                    if (a.getSensorNames().get(j).equals(_sensorName)){
+                        average += Double.parseDouble( a.getValues().get(j));
                         counter++;
                     }
                 }
@@ -201,13 +200,12 @@ public class ParserCSV {
 
     public int LimitExceeded(String _sensorName)
     {
-       // ArrayList<String> sensorNames = fetch(3);
+
         ReaderCSV a = new ReaderCSV(this);
         ArrayList<Double> average = getAverage(_sensorName);
         System.out.println(average.size());
         double limit = 0;
         int counter = 0;
-        //ArrayList<String> dateTimes = fetch(0);
 
 
             if (_sensorName.equals("PM10")) {
