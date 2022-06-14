@@ -262,16 +262,7 @@ public class ParserCSV {
 
         return counter;
     }
-    public JSONArray ArrayToJSONArray(ArrayList <DataReader> a)
-    {
-        JSONArray list = new JSONArray(a);
-        return list;
-    }
-    public JSONArray ArrayToJSONArray()
-    {
-        JSONArray list = new JSONArray(listDto);
-        return list;
-    }
+
 
 
 }

@@ -69,7 +69,7 @@ public class Main {
 
        //printDateJSON(date);
       //  printTRHJSON(date, valuesT,valuesRH );
-       // printDate(date);
+
 
        // double c = parser.AnnualAverage("T");
        // System.out.println(c);
@@ -117,7 +117,7 @@ public class Main {
     }
   public static void PrintJSONTRH()
     {
-        
+
     }
     public static void printDate(ArrayList <String> date)
     {
