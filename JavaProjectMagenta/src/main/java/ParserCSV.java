@@ -261,6 +261,18 @@ public class ParserCSV {
         return counter;
     }
 
+    public static ArrayList<DataReader> JSONSensor(ArrayList <DataReader> listD, Type T)
+    {
+        ArrayList <DataReader> listForSensor = new ArrayList<>();
+        for (int i = 0; i < listD.size();i++)
+        {
+            if(listD.get(i).getSensortype().equals(T))
+            {
+                listForSensor.add(listD.get(i));
+            }
+        }
+        return listForSensor;
+    }
 
 
 }

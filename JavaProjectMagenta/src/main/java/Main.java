@@ -34,7 +34,7 @@ public class Main {
         for (String data : dateTimes) {
             Alldates.add(data.split(" ")[0]);
         } //remove hours
-        for (int i = 1; i < Alldates.size(); i++) { // delete the same dates
+        for (int i = 1; i < Alldates.size(); i++) {
             if (i + 1 < Alldates.size() && !(Alldates.get(i).equals(Alldates.get(i + 1)))) {
                 date.add(Alldates.get(i));
 
@@ -67,6 +67,8 @@ public class Main {
         listD = a.fetch();
         printJSON(listD);
 
+
+
        //printDateJSON(date);
       //  printTRHJSON(date, valuesT,valuesRH );
 
@@ -97,6 +99,7 @@ public class Main {
         ObjectMapper mapper = new ObjectMapper();
         try {
             mapper.writeValue(new File("target/list.json"),listD);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -115,9 +118,19 @@ public class Main {
 
         }
     }
-  public static void PrintJSONTRH()
-    {
 
+  public static void PrintJSONTRH(ArrayList <DataReader> listD)
+    {
+        ArrayList <DataReader> listOne = ParserCSV.JSONSensor(listD,Type.T);
+
+        ArrayList <DataReader> listTwo = ParserCSV.JSONSensor(listD,Type.RH);
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.writeValue(new File("target/listRHT.json"),listOne);
+            mapper.writeValue(new File("target/listRHT.json"),listTwo);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
     public static void printDate(ArrayList <String> date)
     {

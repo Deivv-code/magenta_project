@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class DataReader {
@@ -23,4 +24,6 @@ public class DataReader {
     public Type getSensortype() {
         return sensortype;
     }
+
+
 }
