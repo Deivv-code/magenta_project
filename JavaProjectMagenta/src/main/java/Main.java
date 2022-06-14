@@ -92,19 +92,6 @@ public class Main {
 
     }
 
-
-    public static void printJSON(ArrayList<String> date, ArrayList<Double> values, ParserCSV parser,String sAverage)
-    {
-        JSONArray list = new JSONArray();
-        for (int i=0;i<date.size();i++)
-        {
-            list.put(date.get(i));
-            list.put(values.get(i));
-            list.put(parser.OneAverage(sAverage));
-
-        }
-        System.out.println(list);
-    }
     public static void printJSON(ArrayList<DataReader> listD)
     {
         ObjectMapper mapper = new ObjectMapper();
@@ -128,16 +115,9 @@ public class Main {
 
         }
     }
-    public static void printTRHJSON(ArrayList<String> date, ArrayList<Double> valuesT, ArrayList<Double> valuesRH)
+  public static void PrintJSONTRH()
     {
-        JSONArray list = new JSONArray();
-        for (int i=0;i<date.size();i++)
-        {
-            list.put(date.get(i));
-            list.put(valuesT.get(i));
-            list.put(valuesRH.get(i));
-        }
-        System.out.println(list);
+        
     }
     public static void printDate(ArrayList <String> date)
     {
@@ -162,7 +142,17 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
+ /*   public static void printJSONLimitExceed(Type T, ParserCSV parser)
+    {
+        int Exceed = parser.LimitExceeded(T);
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.writeValue(new File("target/LimitExceed.json"),Exceed);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-
+*/
 
 }
