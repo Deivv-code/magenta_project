@@ -70,9 +70,9 @@ public class Main {
 
 
 
-        printAverageJSON(parser,Type.PM10,listD);
+     //   printAverageJSON(parser,Type.PM10,listD);
 
-
+        System.out.println(parser.OneAverage(Type.T,a));
        //printDateJSON(date);
       //  printTRHJSON(date, valuesT,valuesRH );
 
@@ -150,13 +150,13 @@ public class Main {
 
     public static void printAverageJSON(ParserCSV parser, Type T, ArrayList <DataReader> listD)
     {
-        ArrayList <Double> average =  parser.getAverage2(T, listD);
+        ArrayList <Double> average =  parser.getAverage(T, listD);
 
         ObjectMapper mapper = new ObjectMapper();
-        try {
 
-            mapper.writeValue(new File("target/listAverage.json"),listD);
+        try {
             mapper.writeValue(new File("target/listAverage.json"),average);
+            mapper.writeValue(new File("target/listAverage.json"),listD);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

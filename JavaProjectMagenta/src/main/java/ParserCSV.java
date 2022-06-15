@@ -21,35 +21,8 @@ public class ParserCSV {
     }
 
 
-    public ArrayList<OptionalDouble> getAverage(Type _sensorName) {
-        //must refactor this method
-        ReaderCSV reader = new ReaderCSV(this);
-        listDto = reader.fetch();
 
-        OptionalDouble av;
-        DoubleStream stream;
-
-
-        ArrayList<OptionalDouble> average = new ArrayList<>();
-
-        for (int i = 0; i < listDto.size(); i++) {
-            if (_sensorName.equals(listDto.get(i).getSensortype())) {
-
-                if (listDto.get(i).getDatetime().compareTo(listDto.get(i + 1).getDatetime()) == 0) {
-                    stream = DoubleStream.of(listDto.get(i).getValue());
-                    av = stream.average();
-                    average.add(av);
-
-                }
-
-            }
-        }
-
-
-        return average;
-    }
-
-    public ArrayList<Double> getAverage2(Type T, ArrayList<DataReader> listD) {
+    public ArrayList<Double> getAverage(Type T, ArrayList<DataReader> listD) {
         ReaderCSV a = new ReaderCSV(this);
 
         ArrayList<String> date = new ArrayList<>();
@@ -162,12 +135,12 @@ public class ParserCSV {
         return average / listAV.size();
     }
 
-    /*
-    public OptionalDouble OneAverage(Type n)
+
+    public Double OneAverage(Type n,ReaderCSV reader)
     {
-    listDto = reader.fetch();
-           double average = 0;
-        ArrayList <Double> listAV = this.getAverage(n);
+     listDto = reader.fetch();
+     double average = 0;
+        ArrayList <Double> listAV = this.getAverage(n,listDto);
         for (int i = 0; i<listAV.size();i++)
         {
             average += listAV.get(i);
@@ -176,20 +149,20 @@ public class ParserCSV {
         return average/listAV.size();
     }
 
-     */
 
 
-   /* public int LimitExceeded(Type t)
+
+    public int LimitExceeded(Type t, ReaderCSV reader)
     {
         listDto = reader.fetch();
         ReaderCSV a = new ReaderCSV(this);
-        ArrayList <OptionalDouble> average = getAverage(t);
-        OptionalDouble limit;
+        ArrayList <Double> average = getAverage(t,listDto);
+        double limit = 0;
         int counter=0;
         String s = t.toString();
         if(t == Type.PM10)
         {
-            limit = OptionalDouble.of(this.OneAverage(s));//passare il type);
+            limit = OneAverage(Type.PM10,reader);
             for (int i = 0; i<average.size();i++)
             {
                 if(average.get(i)>limit)
@@ -200,7 +173,7 @@ public class ParserCSV {
         }
            if(t == Type.PM2_5)
         {
-            limit = OptionalDouble.of(this.OneAverage(s));//passare il type);
+            limit = OneAverage(Type.PM2_5,reader);
             for (int i = 0; i<average.size();i++)
             {
                 if(average.get(i)>limit)
@@ -211,7 +184,7 @@ public class ParserCSV {
         }
            if(t == Type.T)
         {
-            limit = OptionalDouble.of(this.OneAverage(s));//passare il type);
+            limit = OneAverage(Type.T,reader);
             for (int i = 0; i<average.size();i++)
             {
                 if(average.get(i)>limit)
@@ -222,7 +195,7 @@ public class ParserCSV {
         }
            if(t == Type.RH)
         {
-            limit = OptionalDouble.of(this.OneAverage(s));//passare il type);
+            limit = OneAverage(Type.RH,reader);
             for (int i = 0; i<average.size();i++)
             {
                 if(average.get(i)>limit)
@@ -233,7 +206,7 @@ public class ParserCSV {
         }
         return counter;
     }
-    */
+
 
     public int LimitExceeded(String _sensorName) {
 
