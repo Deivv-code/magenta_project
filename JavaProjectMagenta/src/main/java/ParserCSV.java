@@ -1,4 +1,4 @@
-import org.json.JSONArray;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.OptionalDouble;
@@ -7,8 +7,7 @@ import java.util.stream.DoubleStream;
 
 public class ParserCSV {
     private final File file;
-    private ArrayList <DataReader> listDto = new ArrayList<>();
-
+    private ArrayList<DataReader> listDto = new ArrayList<>();
 
 
     public ParserCSV(String _fileName) {
@@ -17,14 +16,12 @@ public class ParserCSV {
 
     }
 
-    public File getFile()
-    {
+    public File getFile() {
         return file;
     }
 
 
-    public  ArrayList<OptionalDouble> getAverage(Type _sensorName)
-    {
+    public ArrayList<OptionalDouble> getAverage(Type _sensorName) {
         //must refactor this method
         ReaderCSV reader = new ReaderCSV(this);
         listDto = reader.fetch();
@@ -35,29 +32,72 @@ public class ParserCSV {
 
         ArrayList<OptionalDouble> average = new ArrayList<>();
 
-              for(int i =0; i<listDto.size();i++) {
-                if (_sensorName.equals(listDto.get(i).getSensortype()))
-                {
+        for (int i = 0; i < listDto.size(); i++) {
+            if (_sensorName.equals(listDto.get(i).getSensortype())) {
 
-                        if(listDto.get(i).getDatetime().compareTo(listDto.get(i+1).getDatetime())== 0)
-                        {
-                            stream = DoubleStream.of(listDto.get(i).getValue());
-                            av = stream.average();
-                            average.add(av);
-
-                        }
+                if (listDto.get(i).getDatetime().compareTo(listDto.get(i + 1).getDatetime()) == 0) {
+                    stream = DoubleStream.of(listDto.get(i).getValue());
+                    av = stream.average();
+                    average.add(av);
 
                 }
-              }
+
+            }
+        }
 
 
-
-    return average;
+        return average;
     }
 
-   public ArrayList<Double> getAverage(String _sensorName) {
-        ReaderCSV bo = new ReaderCSV(this);
+    public ArrayList<Double> getAverage2(Type T, ArrayList<DataReader> listD) {
+        ReaderCSV a = new ReaderCSV(this);
 
+        ArrayList<String> date = new ArrayList<>();
+        for (String data : a.getDateTime()) {
+            date.add(data.split(" ")[0]);
+        }
+
+        ArrayList<Double> averages = new ArrayList<>();
+        int counter = 0;
+        ArrayList<Integer> indexes = new ArrayList<>();
+        for (int i = 1; i < date.size(); i++) {
+            indexes.add(i);
+            if (i + 1 < date.size()) {
+                if (!(date.get(i).equals(date.get(i + 1)))) {
+                    double average = 0;
+                    for (int j = 0; j < indexes.size(); j++) {
+                        if (listD.get(j).getSensortype().equals(T)) {
+                            average += listD.get(j).getValue();
+                            counter++;
+                        }
+                    }
+                    average = average / counter;
+                    averages.add(average);
+
+                    indexes.clear();
+                    counter = 0;
+                }
+            } else {
+
+                double average = 0;
+                for (int j = 0; j < indexes.size(); j++) {
+                    if (listD.get(j).getDatetime().equals(T)) {
+                        average += listD.get(j).getValue();
+                        counter++;
+                    }
+                }
+                average = average / counter;
+                averages.add(average);
+                counter = 0;
+
+                indexes.clear();
+            }
+
+        }
+        return averages;
+    }
+
+    public ArrayList<Double> getAverage(String _sensorName) {
 
 
         ReaderCSV a = new ReaderCSV(this);
@@ -67,23 +107,25 @@ public class ParserCSV {
         // process date
 
         ArrayList<String> date = new ArrayList<>();
-        for (String data : a.getDateTime()) { date.add(data.split(" ")[0]); }
+        for (String data : a.getDateTime()) {
+            date.add(data.split(" ")[0]);
+        }
 
-       ArrayList<Double> averages = new ArrayList<>();
+        ArrayList<Double> averages = new ArrayList<>();
         int counter = 0;
         ArrayList<Integer> indexes = new ArrayList<>();
-        for (int i=1; i<date.size(); i++) {
+        for (int i = 1; i < date.size(); i++) {
             indexes.add(i);
-            if (i+1<date.size()) {
-                if (!(date.get(i).equals( date.get(i+1) )) ) {
+            if (i + 1 < date.size()) {
+                if (!(date.get(i).equals(date.get(i + 1)))) {
                     double average = 0;
-                    for (int j=0; j<indexes.size(); j++) {
-                        if (a.getSensorNames().get(j).equals(_sensorName)){
-                            average += Double.parseDouble( a.getValues().get(j));
-                            counter ++;
+                    for (int j = 0; j < indexes.size(); j++) {
+                        if (a.getSensorNames().get(j).equals(_sensorName)) {
+                            average += Double.parseDouble(a.getValues().get(j));
+                            counter++;
                         }
                     }
-                    average = average/counter;
+                    average = average / counter;
                     averages.add(average);
 
                     indexes.clear();
@@ -92,13 +134,13 @@ public class ParserCSV {
             } else {
 
                 double average = 0;
-                for (int j=0; j<indexes.size(); j++) {
-                    if (a.getSensorNames().get(j).equals(_sensorName)){
-                        average += Double.parseDouble( a.getValues().get(j));
+                for (int j = 0; j < indexes.size(); j++) {
+                    if (a.getSensorNames().get(j).equals(_sensorName)) {
+                        average += Double.parseDouble(a.getValues().get(j));
                         counter++;
                     }
                 }
-                average = average/counter;
+                average = average / counter;
                 averages.add(average);
                 counter = 0;
 
@@ -110,19 +152,14 @@ public class ParserCSV {
     }
 
 
-
-
-
-    public Double OneAverage(String s)
-    {
+    public Double OneAverage(String a) {
         double average = 0;
-        ArrayList <Double> listAV = this.getAverage(s);
-        for (int i = 0; i<listAV.size();i++)
-        {
+        ArrayList<Double> listAV = this.getAverage(a);
+        for (int i = 0; i < listAV.size(); i++) {
             average += listAV.get(i);
         }
 
-        return average/listAV.size();
+        return average / listAV.size();
     }
 
     /*
@@ -198,8 +235,7 @@ public class ParserCSV {
     }
     */
 
-    public int LimitExceeded(String _sensorName)
-    {
+    public int LimitExceeded(String _sensorName) {
 
         ReaderCSV a = new ReaderCSV(this);
         ArrayList<Double> average = getAverage(_sensorName);
@@ -208,73 +244,58 @@ public class ParserCSV {
         int counter = 0;
 
 
-            if (_sensorName.equals("PM10")) {
-                limit = this.OneAverage(_sensorName);
+        if (_sensorName.equals("PM10")) {
+            limit = this.OneAverage(_sensorName);
 
 
-                for (int j = 0; j < average.size(); j++) {
-                    if (average.get(j) > limit) {
-                        counter++;
-                    }
+            for (int j = 0; j < average.size(); j++) {
+                if (average.get(j) > limit) {
+                    counter++;
                 }
             }
-            else if (_sensorName.equals("PM2.5"))
-            {
-                limit = this.OneAverage(_sensorName);
+        } else if (_sensorName.equals("PM2.5")) {
+            limit = this.OneAverage(_sensorName);
 
 
-                for (int j =0 ; j<average.size() ;j++)
-                {
-                    if (average.get(j)>limit)
-                    {
-                        counter++;
-                    }
+            for (int j = 0; j < average.size(); j++) {
+                if (average.get(j) > limit) {
+                    counter++;
                 }
             }
-            else if (_sensorName.equals("T"))
-            {
-                limit = this.OneAverage(_sensorName);
+        } else if (_sensorName.equals("T")) {
+            limit = this.OneAverage(_sensorName);
 
-                for (int j = 0; j<average.size();j++)
-                {
-                    if (average.get(j)>limit)
-                    {
-                        counter++;
-                    }
+            for (int j = 0; j < average.size(); j++) {
+                if (average.get(j) > limit) {
+                    counter++;
                 }
             }
-            else if (_sensorName.equals("RH"))
-            {
-                limit = this.OneAverage(_sensorName);
+        } else if (_sensorName.equals("RH")) {
+            limit = this.OneAverage(_sensorName);
 
-                for (int j = 0; j<average.size();j++)
-                {
-                    if (average.get(j)>limit)
-                    {
-                        counter++;
-                    }
+            for (int j = 0; j < average.size(); j++) {
+                if (average.get(j) > limit) {
+                    counter++;
                 }
             }
-
+        }
 
 
         return counter;
     }
 
-    public static ArrayList<DataReader> JSONSensor(ArrayList <DataReader> listD, Type T)
-    {
-        ArrayList <DataReader> listForSensor = new ArrayList<>();
-        for (int i = 0; i < listD.size();i++)
-        {
-            if(listD.get(i).getSensortype().equals(T))
-            {
+    public static ArrayList<DataReader> JSONSensor(ArrayList<DataReader> listD, Type T) {
+        ArrayList<DataReader> listForSensor = new ArrayList<>();
+        for (int i = 0; i < listD.size(); i++) {
+            if (listD.get(i).getSensortype().equals(T)) {
                 listForSensor.add(listD.get(i));
             }
         }
         return listForSensor;
     }
-
-
 }
+
+
+
 
 
