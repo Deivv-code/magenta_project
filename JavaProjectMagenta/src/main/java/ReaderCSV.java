@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ReaderCSV {
 
@@ -20,6 +21,8 @@ public ReaderCSV(ParserCSV parser)
     values = fetch(4);
     dateTime= fetch(0);
 }
+
+
 
 
     public ArrayList<String> fetch(int _index) {
@@ -73,6 +76,14 @@ public ReaderCSV(ParserCSV parser)
     }
 
 
+    public  ArrayList<String> divideDate()
+    {
+        ArrayList<String> date = new ArrayList<>();
+        for (String data : this.getDateTime()) {
+            date.add(data.split(" ")[0]);
+        }
+        return date;
+    }
 
     public ArrayList <String> getSensorNames()
     {

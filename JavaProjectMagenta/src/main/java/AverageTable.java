@@ -1,27 +1,27 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class AverageTable {
-    private Date date;
-    private double average;
+   private ArrayList <Date> date;
+    private ArrayList <Double> average;
 
-    public AverageTable(Date date, double average) {
+    public AverageTable(ArrayList<Date> date, ArrayList<Double> average) {
         this.date = date;
         this.average = average;
     }
 
-    public Date getDate() {
-        return date;
+   public void addDate(Date a)
+   {
+       date.add(a);
+   }
+   public void addAverage(double a)
+   {
+       average.add(a);
+   }
+
+    public AverageTable() {
+
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
-    public double getAverage() {
-        return average;
-    }
-
-    public void setAverage(double average) {
-        this.average = average;
-    }
 }

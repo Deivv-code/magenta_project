@@ -1,5 +1,7 @@
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.OptionalDouble;
@@ -271,14 +273,20 @@ public class ParserCSV {
         return listForSensor;
     }
 
-    public static Date divideDate(ArrayList<DataReader> listD)
+    public  ArrayList <Date> DateConverter(ReaderCSV reader)
     {
-
-
-        ArrayList<String> date = new ArrayList<>();
-        for (String data : this.getDateTime()) {
-            date.add(data.split(" ")[0]);
+        ArrayList <Date> converted = new ArrayList<>();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        ArrayList <String> listDate = reader.divideDate();
+        for (int i = 1; i<listDate.size(); i++)
+        {
+            try {
+                converted.add(formatter.parse(listDate.get(i)));
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
         }
+        return converted;
     }
 
 }
