@@ -104,26 +104,28 @@ public class Main {
     public static void printAverageJSON(ParserCSV parser, Type T, ArrayList <DataReader> listD)
     {
         ReaderCSV a = new ReaderCSV(parser);
-        ArrayList <Date> listDate = new ArrayList<>();
-        for (int i = 0; i < listD.size(); i++)
-        {
-            listDate.add(listD.get(i).getDatetime());
-        }
+        ArrayList <Date> listDate = parser.DateConverter(a);
         ArrayList <Double> averages =  parser.getAverage(T, listD);
         ArrayList <AverageTable> listOfAll = new ArrayList<>();
-        AverageTable at = new AverageTable();
 
-        for (int i = 0; i< listDate.size();i++)
+
+     /*   for (int i = 0; i<100;i++)
         {
-            at.addDate(listDate.get(i));
+            AverageTable at = new AverageTable();
+            for (int j = 0; j< listDate.size(); j++)
+            {
+                at.setDate(listDate.get(i));
+            }
+            for (int j = 0; j< averages.size(); j++)
+            {
+                at.setAverage(averages.get(i));
+            }
+            listOfAll.add(at);
         }
 
-        for (int i = 0; i< averages.size();i++)
-        {
-            at.addAverage(averages.get(i));
-        }
 
-        listOfAll.add(at);
+      */
+
 
         ObjectMapper mapper = new ObjectMapper();
         try {
