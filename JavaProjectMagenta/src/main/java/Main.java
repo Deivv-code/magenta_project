@@ -60,7 +60,7 @@ public class Main {
 
         printJSONTRH(listD);
 
-      printAverageJSON(parser,Type.PM10,listD);
+      printAverageJSON(parser,Type.T,listD);
 
        // System.out.println(parser.OneAverage(Type.T,a));
 
@@ -108,23 +108,22 @@ public class Main {
         ArrayList <Double> averages =  parser.getAverage(T, listD);
         ArrayList <AverageTable> listOfAll = new ArrayList<>();
 
-
-     /*   for (int i = 0; i<100;i++)
-        {
+        for(int i = 0; i<listD.size(); i++) {
             AverageTable at = new AverageTable();
             for (int j = 0; j< listDate.size(); j++)
             {
-                at.setDate(listDate.get(i));
+                at.setDate(listDate.get(j));
             }
             for (int j = 0; j< averages.size(); j++)
             {
-                at.setAverage(averages.get(i));
+                at.setAverage(averages.get(j));
             }
             listOfAll.add(at);
         }
 
 
-      */
+
+
 
 
         ObjectMapper mapper = new ObjectMapper();

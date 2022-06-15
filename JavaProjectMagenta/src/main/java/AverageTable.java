@@ -1,7 +1,7 @@
 import java.util.Date;
 
 public class AverageTable {
-    private Date date;
+    private  Date date;
     private double average;
 
     public AverageTable(Date date, double average) {
