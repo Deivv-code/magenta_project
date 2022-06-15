@@ -7,6 +7,7 @@ import java.io.Console;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.OptionalDouble;
 
 public class Main {
@@ -68,11 +69,11 @@ public class Main {
 
         printJSON(listD);
 
+        printJSONTRH(listD);
 
+     //  printAverageJSON(parser,Type.PM10,listD);
 
-     //   printAverageJSON(parser,Type.PM10,listD);
-
-        System.out.println(parser.OneAverage(Type.T,a));
+       // System.out.println(parser.OneAverage(Type.T,a));
        //printDateJSON(date);
       //  printTRHJSON(date, valuesT,valuesRH );
 
@@ -123,15 +124,19 @@ public class Main {
         }
     }
 
-  public static void PrintJSONTRH(ArrayList <DataReader> listD)
+  public static void printJSONTRH(ArrayList <DataReader> listD)
     {
         ArrayList <DataReader> listOne = ParserCSV.JSONSensor(listD,Type.T);
 
         ArrayList <DataReader> listTwo = ParserCSV.JSONSensor(listD,Type.RH);
+
+        ArrayList <ArrayList> listOfAll = new ArrayList<>();
+        listOfAll.add(listOne);
+        listOfAll.add(listTwo);
         ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.writeValue(new File("target/listRHT.json"),listOne);
-            mapper.writeValue(new File("target/listRHT.json"),listTwo);
+            mapper.writeValue(new File("target/listRHT.json"),listOfAll);
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -151,19 +156,26 @@ public class Main {
     public static void printAverageJSON(ParserCSV parser, Type T, ArrayList <DataReader> listD)
     {
         ArrayList <Double> average =  parser.getAverage(T, listD);
+        ArrayList <Date> listOfDate = new ArrayList<>();
 
+        for (int i = 0; i< listD.size();i++)
+        {
+            listOfDate.add(listD.get(i).getDatetime());
+        }
+        ArrayList <ArrayList> listOfAll = new ArrayList<>();
+        listOfAll.add(listOfDate);
+        listOfAll.add(average);
         ObjectMapper mapper = new ObjectMapper();
-
         try {
-            mapper.writeValue(new File("target/listAverage.json"),average);
-            mapper.writeValue(new File("target/listAverage.json"),listD);
+            mapper.writeValue(new File("target/listAverage.json"),listOfAll);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
- /*   public static void printJSONLimitExceed(Type T, ParserCSV parser)
+   public static void printJSONLimitExceed(Type T, ParserCSV parser, ReaderCSV reader)
     {
-        int Exceed = parser.LimitExceeded(T);
+        int Exceed = parser.LimitExceeded(T,reader);
         ObjectMapper mapper = new ObjectMapper();
         try {
             mapper.writeValue(new File("target/LimitExceed.json"),Exceed);
@@ -172,6 +184,6 @@ public class Main {
         }
     }
 
-*/
+
 
 }
