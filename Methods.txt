@@ -1,0 +1,108 @@
+   public static void print(ArrayList<String> date, ArrayList<Double> values, ParserCSV parser,String sAverage) {
+        String string = "";
+
+        for (int i = 0; i < date.size(); i++) {
+            string = "[" +
+                    "\"" +  date.get(i)  + "\"" + ","  +
+                   values.get(i) + "," + parser.OneAverage(sAverage) +
+                    "], ";
+
+            System.out.println(string);
+        }
+
+
+    }
+
+
+   public static void printTRH(ArrayList<String> date, ArrayList<Double> valuesT, ArrayList<Double> valuesRH) {
+        String string = "";
+
+        for (int i = 0; i < date.size(); i++) {
+            string = "[" +
+                    "\"" + date.get(i) +  "\"" + "," +
+
+                     valuesT.get(i) +  "," +  valuesRH.get(i) +
+                    "], ";
+            System.out.println(string);
+
+        }
+    }
+
+
+   public static void printJSONLimitExceed(Type T, ParserCSV parser, ReaderCSV reader)
+    {
+        int Exceed = parser.LimitExceeded(T,reader);
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.writeValue(new File("target/LimitExceed.json"),Exceed);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+class ParserCSV
+
+   public Double OneAverage(String a) {
+        double average = 0;
+        ArrayList<Double> listAV = this.getAverage(a);
+        for (int i = 0; i < listAV.size(); i++) {
+            average += listAV.get(i);
+        }
+
+        return average / listAV.size();
+    }
+
+
+
+public int LimitExceeded(String _sensorName) {
+
+        ReaderCSV a = new ReaderCSV(this);
+        ArrayList<Double> average = getAverage(_sensorName);
+        System.out.println(average.size());
+        double limit = 0;
+        int counter = 0;
+
+
+        if (_sensorName.equals("PM10")) {
+            limit = this.OneAverage(_sensorName);
+
+
+            for (int j = 0; j < average.size(); j++) {
+                if (average.get(j) > limit) {
+                    counter++;
+                }
+            }
+        } else if (_sensorName.equals("PM2.5")) {
+            limit = this.OneAverage(_sensorName);
+
+
+            for (int j = 0; j < average.size(); j++) {
+                if (average.get(j) > limit) {
+                    counter++;
+                }
+            }
+        } else if (_sensorName.equals("T")) {
+            limit = this.OneAverage(_sensorName);
+
+            for (int j = 0; j < average.size(); j++) {
+                if (average.get(j) > limit) {
+                    counter++;
+                }
+            }
+        } else if (_sensorName.equals("RH")) {
+            limit = this.OneAverage(_sensorName);
+
+            for (int j = 0; j < average.size(); j++) {
+                if (average.get(j) > limit) {
+                    counter++;
+                }
+            }
+        }
+
+
+        return counter;
+    }
