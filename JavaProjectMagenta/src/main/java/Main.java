@@ -71,7 +71,7 @@ public class Main {
 
         printJSONTRH(listD);
 
-     //  printAverageJSON(parser,Type.PM10,listD);
+      printAverageJSON(parser,Type.PM10,listD);
 
        // System.out.println(parser.OneAverage(Type.T,a));
        //printDateJSON(date);
@@ -157,14 +157,14 @@ public class Main {
     {
         ArrayList <Double> average =  parser.getAverage(T, listD);
         ArrayList <Date> listOfDate = new ArrayList<>();
-
-        for (int i = 0; i< listD.size();i++)
-        {
+        ArrayList <ArrayList> listOfAll = new ArrayList<>();
+        for (int i = 0; i< listD.size();i++) {
             listOfDate.add(listD.get(i).getDatetime());
         }
-        ArrayList <ArrayList> listOfAll = new ArrayList<>();
+
         listOfAll.add(listOfDate);
         listOfAll.add(average);
+
         ObjectMapper mapper = new ObjectMapper();
         try {
             mapper.writeValue(new File("target/listAverage.json"),listOfAll);
