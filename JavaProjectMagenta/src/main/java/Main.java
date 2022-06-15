@@ -22,7 +22,7 @@ public class Main {
 
         ArrayList<Double> valuesT = parser.getAverage("T");
         ArrayList <Double> valuesRH = parser.getAverage("RH");
-        // process dateTimes
+
 
 
 
@@ -49,6 +49,12 @@ public class Main {
 
 
         ArrayList<DataReader> listD = a.fetch();
+
+        ArrayList<Double> list = parser.getAverage(Type.T,listD);
+        for (int i = 0; i< list.size(); i++)
+        {
+            System.out.println(list.get(i));
+        }
 
         printJSON(listD);
 
@@ -94,18 +100,15 @@ public class Main {
     }
 
 
-
+    //refactor this method
     public static void printAverageJSON(ParserCSV parser, Type T, ArrayList <DataReader> listD)
     {
-        ArrayList <Double> average =  parser.getAverage(T, listD);
-        ArrayList <Date> listOfDate = new ArrayList<>();
-        ArrayList <ArrayList> listOfAll = new ArrayList<>();
-        for (int i = 0; i< listD.size();i++) {
-            listOfDate.add(listD.get(i).getDatetime());
-        }
+        ReaderCSV a = new ReaderCSV(parser);
 
-        listOfAll.add(listOfDate);
-        listOfAll.add(average);
+        ArrayList <Double> average =  parser.getAverage(T, listD);
+        ArrayList <AverageTable> listOfAll = new ArrayList<>();
+
+
 
         ObjectMapper mapper = new ObjectMapper();
         try {

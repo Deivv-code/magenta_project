@@ -1,6 +1,7 @@
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.OptionalDouble;
 import java.util.stream.DoubleStream;
 
@@ -33,7 +34,7 @@ public class ParserCSV {
         ArrayList<Double> averages = new ArrayList<>();
         int counter = 0;
         ArrayList<Integer> indexes = new ArrayList<>();
-        for (int i = 1; i < date.size(); i++) {
+        for (int i = 1; i < date.size()-1; i++) {
             indexes.add(i);
             if (i + 1 < date.size()) {
                 if (!(date.get(i).equals(date.get(i + 1)))) {
@@ -44,8 +45,11 @@ public class ParserCSV {
                             counter++;
                         }
                     }
+
+
                     average = average / counter;
                     averages.add(average);
+
 
                     indexes.clear();
                     counter = 0;
@@ -266,6 +270,17 @@ public class ParserCSV {
         }
         return listForSensor;
     }
+
+    public static Date divideDate(ArrayList<DataReader> listD)
+    {
+
+
+        ArrayList<String> date = new ArrayList<>();
+        for (String data : this.getDateTime()) {
+            date.add(data.split(" ")[0]);
+        }
+    }
+
 }
 
 
