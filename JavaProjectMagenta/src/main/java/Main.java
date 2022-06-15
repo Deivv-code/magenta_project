@@ -44,26 +44,9 @@ public class Main {
         date.add(Alldates.get(Alldates.size() - 1));
 
 
-   /*    ArrayList < OptionalDouble > average = new ArrayList<>();
-        average = parser.getAverage(Type.PM10);
-
-        for (int i = 0; i< average.size(); i++)
-        {
-            System.out.println(average.get(i));
-        }
-*/
 
 
-       // double c = parser.OneAverage("PM10");
-       // System.out.println(c);
 
-
-        // int b = parser.LimitExceeded("PM10");
-
-      //  System.out.println(b);
-       //  print(date, values, parser,"RH");
-
-      // printTRH(date, valuesT,valuesRH );
 
         ArrayList<DataReader> listD = a.fetch();
 
@@ -74,30 +57,12 @@ public class Main {
       printAverageJSON(parser,Type.PM10,listD);
 
        // System.out.println(parser.OneAverage(Type.T,a));
-       //printDateJSON(date);
-      //  printTRHJSON(date, valuesT,valuesRH );
-
-
-       // double c = parser.AnnualAverage("T");
-       // System.out.println(c);
-    }
-
-
-    //Eliminate the normal print and keep only the JSON print
-   public static void print(ArrayList<String> date, ArrayList<Double> values, ParserCSV parser,String sAverage) {
-        String string = "";
-
-        for (int i = 0; i < date.size(); i++) {
-            string = "[" +
-                    "\"" +  date.get(i)  + "\"" + ","  +
-                   values.get(i) + "," + parser.OneAverage(sAverage) +
-                    "], ";
-
-            System.out.println(string);
-        }
 
 
     }
+
+
+
 
     public static void printJSON(ArrayList<DataReader> listD)
     {
@@ -107,20 +72,6 @@ public class Main {
 
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    public static void printTRH(ArrayList<String> date, ArrayList<Double> valuesT, ArrayList<Double> valuesRH) {
-        String string = "";
-
-        for (int i = 0; i < date.size(); i++) {
-            string = "[" +
-                    "\"" + date.get(i) +  "\"" + "," +
-
-                     valuesT.get(i) +  "," +  valuesRH.get(i) +
-                    "], ";
-            System.out.println(string);
-
         }
     }
 
@@ -141,16 +92,7 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
-    public static void printDate(ArrayList <String> date)
-    {
-        String a = "";
-        for (int i = 0; i<date.size();i++)
-        {
-             a = "[" + "\"" + date.get(i) + "\"" + "]" +",";
-            System.out.println(a);
-        }
 
-    }
 
 
     public static void printAverageJSON(ParserCSV parser, Type T, ArrayList <DataReader> listD)
@@ -173,17 +115,6 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
-   public static void printJSONLimitExceed(Type T, ParserCSV parser, ReaderCSV reader)
-    {
-        int Exceed = parser.LimitExceeded(T,reader);
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            mapper.writeValue(new File("target/LimitExceed.json"),Exceed);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
 
 
 }
