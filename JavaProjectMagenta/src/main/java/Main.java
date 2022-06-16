@@ -58,7 +58,7 @@ public class Main {
 
         printJSON(listD);
 
-        printJSONTRH(listD);
+        printJSONTRH(listD, parser);
 
       printAverageJSON(parser,Type.T,listD);
 
@@ -81,15 +81,60 @@ public class Main {
         }
     }
 
-  public static void printJSONTRH(ArrayList <DataReader> listD)
+  public static void printJSONTRH(ArrayList <DataReader> listD, ParserCSV parser)
     {
         ArrayList <DataReader> listOne = ParserCSV.JSONSensor(listD,Type.T);
 
         ArrayList <DataReader> listTwo = ParserCSV.JSONSensor(listD,Type.RH);
 
+        ArrayList <Double> averages1 = parser.getAverage(Type.T,listD);
+        ArrayList <Double> averages2 = parser.getAverage(Type.RH, listD);
+
+        ArrayList<Date> listDate1 = new ArrayList<>();
+        ArrayList<Date> listDate2 = new ArrayList<>();
+
+        ArrayList <AverageTable> listOfAll1 = new ArrayList<>();
+        ArrayList <AverageTable> listOfAll2 = new ArrayList<>();
+
+
+
+        for (int i = 0; i< listOne.size();i++)
+        {
+            listDate1.add(listOne.get(i).getDatetime());
+        }
+        for (int i = 0; i< listTwo.size();i++)
+        {
+            listDate2.add(listTwo.get(i).getDatetime());
+        }
+
+        for (int j = 0 ; j < listDate1.size(); j++)
+        {
+            for (int i = 0; i< averages1.size();i++)
+            {
+                AverageTable at = new AverageTable();
+                at.setDate(listDate1.get(j));
+                at.setAverage(averages1.get(i));
+                at.setSensorType(Type.T);
+                listOfAll1.add(at);
+
+            }
+        }
+
+        for (int j = 0; j < listDate2.size(); j++)
+        {
+            for (int i = 0; i < averages2.size(); i++)
+            {
+                AverageTable at = new AverageTable();
+                at.setDate(listDate2.get(j));
+                at.setAverage(averages2.get(i));
+                at.setSensorType(Type.RH);
+                listOfAll2.add(at);
+            }
+        }
+
         ArrayList <ArrayList> listOfAll = new ArrayList<>();
-        listOfAll.add(listOne);
-        listOfAll.add(listTwo);
+        listOfAll.add(listOfAll1);
+        listOfAll.add(listOfAll2);
         ObjectMapper mapper = new ObjectMapper();
         try {
             mapper.writeValue(new File("target/listRHT.json"),listOfAll);
@@ -105,8 +150,6 @@ public class Main {
     {
         ReaderCSV a = new ReaderCSV(parser);
         ArrayList <Date> listDate = parser.DateConverter(a);
-
-
         ArrayList <Double> averages =  parser.getAverage(T, listD);
         ArrayList <AverageTable> listOfAll = new ArrayList<>();
 
@@ -118,6 +161,7 @@ public class Main {
                    AverageTable at = new AverageTable();
                    at.setDate(listDate.get(j));
                    at.setAverage(averages.get(i));
+                   at.setSensorType(T);
                    listOfAll.add(at);
                }
 
