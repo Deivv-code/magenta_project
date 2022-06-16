@@ -50,12 +50,13 @@ public class Main {
 
         ArrayList<DataReader> listD = a.fetch();
 
-        ArrayList<Double> list = parser.getAverage(Type.T,listD);
+      /*  ArrayList<Double> list = parser.getAverage(Type.T,listD);
         for (int i = 0; i< list.size(); i++)
         {
             System.out.println(list.get(i));
         }
-
+     */
+        
         printJSON(listD);
 
         printJSONTRH(listD, parser);
