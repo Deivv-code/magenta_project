@@ -103,23 +103,31 @@ public class Main {
     //refactor this method
     public static void printAverageJSON(ParserCSV parser, Type T, ArrayList <DataReader> listD)
     {
-        ReaderCSV a = new ReaderCSV(parser);
-        ArrayList <Date> listDate = parser.DateConverter(a);
+
+        ArrayList <Date> listDate = new ArrayList<>();
+        for (int i = 0; i<listD.size();i++)
+        {
+            listDate.add(listD.get(i).getDatetime());
+        }
+
         ArrayList <Double> averages =  parser.getAverage(T, listD);
         ArrayList <AverageTable> listOfAll = new ArrayList<>();
 
-        for(int i = 0; i<listD.size(); i++) {
-            AverageTable at = new AverageTable();
             for (int j = 0; j< listDate.size(); j++)
             {
-                at.setDate(listDate.get(j));
+
+               for (int i = 0; i < averages.size(); i++)
+               {
+                   AverageTable at = new AverageTable();
+                   at.setDate(listDate.get(j));
+                   at.setAverage(averages.get(i));
+                   listOfAll.add(at);
+               }
+
             }
-            for (int j = 0; j< averages.size(); j++)
-            {
-                at.setAverage(averages.get(j));
-            }
-            listOfAll.add(at);
-        }
+
+
+
 
 
 
