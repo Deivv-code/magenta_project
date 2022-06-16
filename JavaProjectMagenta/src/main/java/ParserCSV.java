@@ -131,15 +131,7 @@ public class ParserCSV {
     }
 
 
-    public Double OneAverage(String a) {
-        double average = 0;
-        ArrayList<Double> listAV = this.getAverage(a);
-        for (int i = 0; i < listAV.size(); i++) {
-            average += listAV.get(i);
-        }
 
-        return average / listAV.size();
-    }
 
 
     public Double OneAverage(Type n,ReaderCSV reader)
@@ -214,54 +206,7 @@ public class ParserCSV {
     }
 
 
-    public int LimitExceeded(String _sensorName) {
 
-        ReaderCSV a = new ReaderCSV(this);
-        ArrayList<Double> average = getAverage(_sensorName);
-        System.out.println(average.size());
-        double limit = 0;
-        int counter = 0;
-
-
-        if (_sensorName.equals("PM10")) {
-            limit = this.OneAverage(_sensorName);
-
-
-            for (int j = 0; j < average.size(); j++) {
-                if (average.get(j) > limit) {
-                    counter++;
-                }
-            }
-        } else if (_sensorName.equals("PM2.5")) {
-            limit = this.OneAverage(_sensorName);
-
-
-            for (int j = 0; j < average.size(); j++) {
-                if (average.get(j) > limit) {
-                    counter++;
-                }
-            }
-        } else if (_sensorName.equals("T")) {
-            limit = this.OneAverage(_sensorName);
-
-            for (int j = 0; j < average.size(); j++) {
-                if (average.get(j) > limit) {
-                    counter++;
-                }
-            }
-        } else if (_sensorName.equals("RH")) {
-            limit = this.OneAverage(_sensorName);
-
-            for (int j = 0; j < average.size(); j++) {
-                if (average.get(j) > limit) {
-                    counter++;
-                }
-            }
-        }
-
-
-        return counter;
-    }
 
     public static ArrayList<DataReader> JSONSensor(ArrayList<DataReader> listD, Type T) {
         ArrayList<DataReader> listForSensor = new ArrayList<>();

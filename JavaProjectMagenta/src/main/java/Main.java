@@ -62,6 +62,8 @@ public class Main {
 
       printAverageJSON(parser,Type.T,listD);
 
+
+
        // System.out.println(parser.OneAverage(Type.T,a));
 
 
@@ -152,8 +154,10 @@ public class Main {
         ArrayList <Date> listDate = parser.DateConverter(a);
         ArrayList <Double> averages =  parser.getAverage(T, listD);
         ArrayList <AverageTable> listOfAll = new ArrayList<>();
+        int limit = parser.LimitExceeded(T,a);
 
-            for (int j = 0; j< listDate.size(); j++)
+
+        for (int j = 0; j< listDate.size(); j++)
             {
 
                for (int i = 0; i < averages.size(); i++)
@@ -162,6 +166,7 @@ public class Main {
                    at.setDate(listDate.get(j));
                    at.setAverage(averages.get(i));
                    at.setSensorType(T);
+                   at.setLimitExceed(limit);
                    listOfAll.add(at);
                }
 
@@ -175,6 +180,8 @@ public class Main {
             throw new RuntimeException(e);
         }
     }
+
+
 
 
 }

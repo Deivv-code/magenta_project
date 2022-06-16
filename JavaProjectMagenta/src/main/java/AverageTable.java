@@ -6,6 +6,7 @@ public class AverageTable {
 
     private Type sensorType;
 
+    private int limitExceed;
     public AverageTable(Date date, double average) {
         this.date = date;
         this.average = average;
@@ -15,6 +16,13 @@ public class AverageTable {
         this.date = date;
         this.average = average;
         this.sensorType = sensorType;
+    }
+
+    public AverageTable(Date date, double average, Type sensorType, int limitExceed) {
+        this.date = date;
+        this.average = average;
+        this.sensorType = sensorType;
+        this.limitExceed = limitExceed;
     }
 
     public AverageTable() {
@@ -43,5 +51,13 @@ public class AverageTable {
 
     public void setSensorType(Type sensorType) {
         this.sensorType = sensorType;
+    }
+
+    public int getLimitExceed() {
+        return limitExceed;
+    }
+
+    public void setLimitExceed(int limitExceed) {
+        this.limitExceed = limitExceed;
     }
 }
