@@ -78,10 +78,18 @@ public ReaderCSV(ParserCSV parser)
 
     public  ArrayList<String> divideDate()
     {
-        ArrayList<String> date = new ArrayList<>();
+        ArrayList <String> Alldates = new ArrayList<>();
+        ArrayList <String> date = new ArrayList<>();
         for (String data : this.getDateTime()) {
-            date.add(data.split(" ")[0]);
+            Alldates.add(data.split(" ")[0]);
+        } //remove hours
+        for (int i = 1; i < Alldates.size(); i++) {
+            if (i + 1 < Alldates.size() && !(Alldates.get(i).equals(Alldates.get(i + 1)))) {
+                date.add(Alldates.get(i));
+
+            }
         }
+        date.add(Alldates.get(Alldates.size() - 1));
         return date;
     }
 

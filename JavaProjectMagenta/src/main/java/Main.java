@@ -103,12 +103,10 @@ public class Main {
     //refactor this method
     public static void printAverageJSON(ParserCSV parser, Type T, ArrayList <DataReader> listD)
     {
+        ReaderCSV a = new ReaderCSV(parser);
+        ArrayList <Date> listDate = parser.DateConverter(a);
 
-        ArrayList <Date> listDate = new ArrayList<>();
-        for (int i = 0; i<listD.size();i++)
-        {
-            listDate.add(listD.get(i).getDatetime());
-        }
+
 
         ArrayList <Double> averages =  parser.getAverage(T, listD);
         ArrayList <AverageTable> listOfAll = new ArrayList<>();
