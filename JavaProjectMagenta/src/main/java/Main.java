@@ -107,7 +107,6 @@ public class Main {
         ArrayList <Date> listDate = parser.DateConverter(a);
 
 
-
         ArrayList <Double> averages =  parser.getAverage(T, listD);
         ArrayList <AverageTable> listOfAll = new ArrayList<>();
 
@@ -123,14 +122,6 @@ public class Main {
                }
 
             }
-
-
-
-
-
-
-
-
 
         ObjectMapper mapper = new ObjectMapper();
         try {
