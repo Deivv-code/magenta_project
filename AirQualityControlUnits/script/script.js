@@ -45,7 +45,7 @@ function drawChart() {
       f: i + place
     });
   }*/
-  var data = google.visualization.arrayToDataTable([
+/*  var data = google.visualization.arrayToDataTable([
 
     ["datatime", "media giornaliera","media annuale"],
 
@@ -161,7 +161,7 @@ function drawChart() {
   */  /*series: {
       0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
       1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
-    },*/
+    },
     vAxis: {
       title: 'Valori (scale of 1-20)',
      //ticks: ticks
@@ -179,14 +179,17 @@ function drawChart() {
     }
 
   }
-
+ 
+ */
 /*const colums = row.split(",");
 const days=colums[0];
   xlabels.push(days);*/
 
+  /*
   var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
   chart.draw(data, options);
+  */
 }
 
 function drawChart2() {
@@ -749,3 +752,22 @@ function drawChart5() {
 }
 
 
+google.charts.load('current', {'packages':['corechart']});
+      
+// Set a callback to run when the Google Visualization API is loaded.
+google.charts.setOnLoadCallback(drawChart);
+  
+function drawChart() {
+  var jsonData = $.ajax({
+      url: "../JavaProjectMagenta/target/listAverage.json",
+      dataType: "json",
+      async: false
+      }).responseText;
+      
+  // Create our data table out of JSON data loaded from server.
+  var data = new google.visualization.DataTable(jsonData);
+
+  // Instantiate and draw our chart, passing in some options.
+  var chart = new google.visualization.PieChart(document.getElementById('curve_chart'));
+  chart.draw(data, {width: 400, height: 240});
+}

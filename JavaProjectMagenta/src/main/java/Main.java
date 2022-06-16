@@ -56,7 +56,7 @@ public class Main {
             System.out.println(list.get(i));
         }
      */
-        
+
         printJSON(listD);
 
         printJSONTRH(listD, parser);
