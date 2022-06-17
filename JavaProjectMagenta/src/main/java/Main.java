@@ -61,8 +61,10 @@ public class Main {
 
         printJSONTRH(listD, parser);
 
-      printAverageJSON(parser,Type.T,listD);
-
+      printAverageJSON(parser,Type.PM10,listD);
+        printAverageJSON(parser,Type.PM2_5,listD);
+        printAverageJSON(parser,Type.T,listD);
+        printAverageJSON(parser,Type.RH,listD);
 
 
        // System.out.println(parser.OneAverage(Type.T,a));
@@ -173,13 +175,48 @@ public class Main {
 
             }
 
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            mapper.writeValue(new File("target/listAverage.json"),listOfAll);
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        ObjectMapper mapper = new ObjectMapper();
+        if (T.equals(Type.T))
+        {
+            try {
+                mapper.writeValue(new File("target/listAverageT.json"),listOfAll);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
         }
+        if (T.equals(Type.PM10))
+        {
+            try {
+                mapper.writeValue(new File("target/listAveragePM10.json"),listOfAll);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (T.equals(Type.PM2_5))
+        {
+            try {
+                mapper.writeValue(new File("target/listAveragePM2_5.json"),listOfAll);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (T.equals(Type.RH))
+        {
+            try {
+                mapper.writeValue(new File("target/listAverageRH.json"),listOfAll);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+
     }
 
 

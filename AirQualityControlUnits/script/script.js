@@ -9,9 +9,14 @@ google.charts.setOnLoadCallback(drawChart4);
 google.charts.setOnLoadCallback(drawChart5);
 google.charts.setOnLoadCallback(drawStuff);
 
+google.charts.load('current', {'packages':['corechart']});
+      
 
 
-function drawChart() {
+
+
+
+/*function drawChart() {
 
  /* var ticks = [];
   for (var i = 0; i <= 90; i = i + 15) {
@@ -190,7 +195,8 @@ const days=colums[0];
 
   chart.draw(data, options);
   */
-}
+//} 
+
 
 function drawChart2() {
   var data2 = google.visualization.arrayToDataTable([
@@ -586,10 +592,10 @@ function drawStuff() {
   data.addColumn('number', 'Giorni');
   data.addRows([
 
-    ['RH', 62],
-    ['T', 6],
-    ['PM2.5', 62],
-    ['PM10', 62],
+    ['RH', 61],
+    ['T', 63],
+    ['PM2.5', 61],
+    ['PM10', 61],
   ]);
 
   var options = {
@@ -752,14 +758,10 @@ function drawChart5() {
 }
 
 
-google.charts.load('current', {'packages':['corechart']});
-      
-// Set a callback to run when the Google Visualization API is loaded.
-google.charts.setOnLoadCallback(drawChart);
   
 function drawChart() {
   var jsonData = $.ajax({
-      url: "../JavaProjectMagenta/target/listAverage.json",
+      url: "../JavaProjectMagenta/target/listAverageT.json",
       dataType: "json",
       async: false
       }).responseText;
