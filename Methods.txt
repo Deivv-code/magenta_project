@@ -166,3 +166,59 @@ public int LimitExceeded(String _sensorName) {
 
         return average / listAV.size();
     }
+
+    public ArrayList<Double> getAverage(String _sensorName) {
+
+
+        ReaderCSV a = new ReaderCSV(this);
+
+        //change all ArrayList that use fetch with a.get
+
+        // process date
+
+        ArrayList<String> date = new ArrayList<>();
+        for (String data : a.getDateTime()) {
+            date.add(data.split(" ")[0]);
+        }
+
+        ArrayList<Double> averages = new ArrayList<>();
+        int counter = 0;
+        ArrayList<Integer> indexes = new ArrayList<>();
+        for (int i = 1; i < date.size(); i++) {
+            indexes.add(i);
+            if (i + 1 < date.size()) {
+                if (!(date.get(i).equals(date.get(i + 1)))) {
+                    double average = 0;
+                    for (int j = 0; j < indexes.size(); j++) {
+                        if (a.getSensorNames().get(j).equals(_sensorName)) {
+                            average += Double.parseDouble(a.getValues().get(j));
+                            counter++;
+                        }
+                    }
+                    average = average / counter;
+                    averages.add(average);
+
+                    indexes.clear();
+                    counter = 0;
+                }
+            } else {
+
+                double average = 0;
+                for (int j = 0; j < indexes.size(); j++) {
+                    if (a.getSensorNames().get(j).equals(_sensorName)) {
+                        average += Double.parseDouble(a.getValues().get(j));
+                        counter++;
+                    }
+                }
+                average = average / counter;
+                averages.add(average);
+                counter = 0;
+
+                indexes.clear();
+            }
+        }
+
+        return averages;
+    }
+
+
