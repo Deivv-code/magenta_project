@@ -88,6 +88,7 @@ public class Main {
 
   public static void printJSONTRH(ArrayList <DataReader> listD, ParserCSV parser)
     {
+        ReaderCSV reader = new ReaderCSV(parser);
         ArrayList <DataReader> listOne = ParserCSV.JSONSensor(listD,Type.T);
 
         ArrayList <DataReader> listTwo = ParserCSV.JSONSensor(listD,Type.RH);
@@ -101,7 +102,8 @@ public class Main {
         ArrayList <AverageTable> listOfAll1 = new ArrayList<>();
         ArrayList <AverageTable> listOfAll2 = new ArrayList<>();
 
-
+        int limitOne = parser.LimitExceeded(Type.T,reader);
+        int limitTwo = parser.LimitExceeded(Type.RH,reader);
 
         for (int i = 0; i< listOne.size();i++)
         {
@@ -134,6 +136,7 @@ public class Main {
                 at.setAverage(averages2.get(i));
                 at.setSensorType(Type.RH);
                 listOfAll2.add(at);
+
             }
         }
 
@@ -169,7 +172,7 @@ public class Main {
                    at.setDate(listDate.get(j));
                    at.setAverage(averages.get(i));
                    at.setSensorType(T);
-                   at.setLimitExceed(limit);
+                 //  at.setLimitExceed(limit);
                    listOfAll.add(at);
                }
 
