@@ -18,10 +18,6 @@ public class Main {
         ParserCSV parser = new ParserCSV(fileName);
 
         ReaderCSV a = new ReaderCSV(parser);
-        ArrayList<Double> values = parser.getAverage("RH");
-
-        ArrayList<Double> valuesT = parser.getAverage("T");
-        ArrayList <Double> valuesRH = parser.getAverage("RH");
 
 
 

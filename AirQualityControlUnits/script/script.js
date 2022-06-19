@@ -759,6 +759,7 @@ function drawChart5() {
 
 
   
+
 function drawChart() {
   var jsonData = $.ajax({
       url: "../JavaProjectMagenta/target/listAverageT.json",
@@ -770,6 +771,6 @@ function drawChart() {
   var data = new google.visualization.DataTable(jsonData);
 
   // Instantiate and draw our chart, passing in some options.
-  var chart = new google.visualization.PieChart(document.getElementById('curve_chart'));
-  chart.draw(data, {width: 400, height: 240});
+  var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+  chart.draw(data);
 }
