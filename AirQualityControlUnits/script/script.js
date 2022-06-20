@@ -762,8 +762,8 @@ function drawChart5() {
 
 function drawChart() {
   var jsonData = $.ajax({
-      url: "../JavaProjectMagenta/target/listAverageT.json",
-      dataType: "json",
+      url: "../ReadJSON.php",
+      dataType: "php",
       async: false
       }).responseText;
       
