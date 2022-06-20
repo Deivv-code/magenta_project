@@ -2,12 +2,14 @@ google.charts.load('current', {
   'packages': ['corechart']
 });
 
-google.charts.setOnLoadCallback(drawChart);
+
 google.charts.setOnLoadCallback(drawChart2);
 google.charts.setOnLoadCallback(drawChart3);
 google.charts.setOnLoadCallback(drawChart4);
 google.charts.setOnLoadCallback(drawChart5);
 google.charts.setOnLoadCallback(drawStuff);
+google.charts.load('visualization', { packages: ['corechart'] });
+google.charts.setOnLoadCallback(drawLineChart);
 
 google.charts.load('current', {'packages':['corechart']});
       
@@ -620,10 +622,7 @@ function drawStuff() {
   var chart = new google.visualization.ColumnChart(document.getElementById('number_format_chart'));
   chart.draw(data, options);
 
-  document.getElementById('format-select').onchange = function () {
-    options['vAxis']['format'] = this.value;
-    chart.draw(data, options);
-  };
+ 
 };
 
 function drawChart5() {
@@ -760,17 +759,43 @@ function drawChart5() {
 
   
 
-function drawChart() {
-  var jsonData = $.ajax({
-      url: "../ReadJSON.php",
-      dataType: "php",
-      async: false
-      }).responseText;
-      
-  // Create our data table out of JSON data loaded from server.
-  var data = new google.visualization.DataTable(jsonData);
 
-  // Instantiate and draw our chart, passing in some options.
-  var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-  chart.draw(data);
-}
+
+
+    // Visualization API with the 'corechart' package.
+
+
+    function drawLineChart() {
+        $.ajax({
+            url: "../JavaProjectMagenta/target/listAverageT.json",
+            dataType: "json",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                var arrSales = [['Month', 'Sales Figure', 'Perc. (%)']];    // Define an array and assign columns for the chart.
+
+                // Loop through each data and populate the array.
+                $.each(data, function (index, value) {
+                    arrSales.push([value.Month, value.Sales_Figure, value.Perc]);
+                });
+
+                // Set chart Options.
+                var options = {
+                    title: 'Monthly Sales',
+                    curveType: 'function',
+                    legend: { position: 'bottom', textStyle: { color: '#555', fontSize: 14} }  // You can position the legend on 'top' or at the 'bottom'.
+                };
+
+                // Create DataTable and add the array to it.
+                var figures = google.visualization.arrayToDataTable(arrSales)
+
+                // Define the chart type (LineChart) and the container (a DIV in our case).
+                var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+                chart.draw(figures, options);      // Draw the chart with Options.
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('Got an Error');
+            }
+        });
+    }
+

@@ -1,7 +1,13 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;
 
 import javax.naming.LimitExceededException;
+import javax.swing.*;
+import java.io.Console;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.OptionalDouble;
 
 public class Main {
@@ -12,11 +18,7 @@ public class Main {
         ParserCSV parser = new ParserCSV(fileName);
 
         ReaderCSV a = new ReaderCSV(parser);
-        ArrayList<Double> values = parser.getAverage("RH");
 
-        ArrayList<Double> valuesT = parser.getAverage("T");
-        ArrayList <Double> valuesRH = parser.getAverage("RH");
-        // process dateTimes
 
 
 
@@ -29,7 +31,7 @@ public class Main {
         for (String data : dateTimes) {
             Alldates.add(data.split(" ")[0]);
         } //remove hours
-        for (int i = 1; i < Alldates.size(); i++) { // delete the same dates
+        for (int i = 1; i < Alldates.size(); i++) {
             if (i + 1 < Alldates.size() && !(Alldates.get(i).equals(Alldates.get(i + 1)))) {
                 date.add(Alldates.get(i));
 
@@ -38,109 +40,185 @@ public class Main {
         date.add(Alldates.get(Alldates.size() - 1));
 
 
-     /*   ArrayList < OptionalDouble > average = new ArrayList<>();
-        average = parser.getAverage(Type.PM10);
 
-        for (int i = 0; i< average.size(); i++)
+
+
+
+        ArrayList<DataReader> listD = a.fetch();
+
+      /*  ArrayList<Double> list = parser.getAverage(Type.T,listD);
+        for (int i = 0; i< list.size(); i++)
         {
-            System.out.println(average.get(i));
+            System.out.println(list.get(i));
         }
-*/
+     */
 
-       // double c = parser.OneAverage("PM10");
-       // System.out.println(c);
+        printJSON(listD);
+
+        printJSONTRH(listD, parser);
+
+      printAverageJSON(parser,Type.PM10,listD);
+        printAverageJSON(parser,Type.PM2_5,listD);
+        printAverageJSON(parser,Type.T,listD);
+        printAverageJSON(parser,Type.RH,listD);
 
 
-        // int b = parser.LimitExceeded("PM10");
-
-      //  System.out.println(b);
-       //  print(date, values, parser,"RH");
-
-      // printTRH(date, valuesT,valuesRH );
-
-        printJSON(date,values,parser,"RH");
-
-       //printDateJSON(date);
-      //  printTRHJSON(date, valuesT,valuesRH );
-       // printDate(date);
-
-       // double c = parser.AnnualAverage("T");
-       // System.out.println(c);
-    }
-
-   public static void print(ArrayList<String> date, ArrayList<Double> values, ParserCSV parser,String sAverage) {
-        String string = "";
-
-        for (int i = 0; i < date.size(); i++) {
-            string = "[" +
-                    "\"" +  date.get(i)  + "\"" + ","  +
-                   values.get(i) + "," + parser.OneAverage(sAverage) +
-                    "], ";
-
-            System.out.println(string);
-        }
+       // System.out.println(parser.OneAverage(Type.T,a));
 
 
     }
 
 
-    public static void printJSON(ArrayList<String> date, ArrayList<Double> values, ParserCSV parser,String sAverage)
+
+
+    public static void printJSON(ArrayList<DataReader> listD)
     {
-        JSONArray list = new JSONArray();
-        for (int i=0;i<date.size();i++)
-        {
-            list.put(date.get(i));
-            list.put(values.get(i));
-            list.put(parser.OneAverage(sAverage));
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.writeValue(new File("target/list.json"),listD);
 
-        }
-        System.out.println(list);
-    }
-
-    public static void printTRH(ArrayList<String> date, ArrayList<Double> valuesT, ArrayList<Double> valuesRH) {
-        String string = "";
-
-        for (int i = 0; i < date.size(); i++) {
-            string = "[" +
-                    "\"" + date.get(i) +  "\"" + "," +
-
-                     valuesT.get(i) +  "," +  valuesRH.get(i) +
-                    "], ";
-            System.out.println(string);
-
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
-    public static void printTRHJSON(ArrayList<String> date, ArrayList<Double> valuesT, ArrayList<Double> valuesRH)
+
+  public static void printJSONTRH(ArrayList <DataReader> listD, ParserCSV parser)
     {
-        JSONArray list = new JSONArray();
-        for (int i=0;i<date.size();i++)
+        ReaderCSV reader = new ReaderCSV(parser);
+        ArrayList <DataReader> listOne = ParserCSV.JSONSensor(listD,Type.T);
+
+        ArrayList <DataReader> listTwo = ParserCSV.JSONSensor(listD,Type.RH);
+
+        ArrayList <Double> averages1 = parser.getAverage(Type.T,listD);
+        ArrayList <Double> averages2 = parser.getAverage(Type.RH, listD);
+
+        ArrayList<Date> listDate1 = new ArrayList<>();
+        ArrayList<Date> listDate2 = new ArrayList<>();
+
+        ArrayList <AverageTable> listOfAll1 = new ArrayList<>();
+        ArrayList <AverageTable> listOfAll2 = new ArrayList<>();
+
+        int limitOne = parser.LimitExceeded(Type.T,reader);
+        int limitTwo = parser.LimitExceeded(Type.RH,reader);
+
+        for (int i = 0; i< listOne.size();i++)
         {
-            list.put(date.get(i));
-            list.put(valuesT.get(i));
-            list.put(valuesRH.get(i));
+            listDate1.add(listOne.get(i).getDatetime());
         }
-        System.out.println(list);
+        for (int i = 0; i< listTwo.size();i++)
+        {
+            listDate2.add(listTwo.get(i).getDatetime());
+        }
+
+        for (int j = 0 ; j < listDate1.size(); j++)
+        {
+            for (int i = 0; i< averages1.size();i++)
+            {
+                AverageTable at = new AverageTable();
+                at.setDate(listDate1.get(j));
+                at.setAverage(averages1.get(i));
+                at.setSensorType(Type.T);
+                listOfAll1.add(at);
+
+            }
+        }
+
+        for (int j = 0; j < listDate2.size(); j++)
+        {
+            for (int i = 0; i < averages2.size(); i++)
+            {
+                AverageTable at = new AverageTable();
+                at.setDate(listDate2.get(j));
+                at.setAverage(averages2.get(i));
+                at.setSensorType(Type.RH);
+                listOfAll2.add(at);
+
+            }
+        }
+
+        ArrayList <ArrayList> listOfAll = new ArrayList<>();
+        listOfAll.add(listOfAll1);
+        listOfAll.add(listOfAll2);
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            mapper.writeValue(new File("target/listRHT.json"),listOfAll);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
-    public static void printDate(ArrayList <String> date)
+
+
+    //refactor this method
+    public static void printAverageJSON(ParserCSV parser, Type T, ArrayList <DataReader> listD)
     {
-        String a = "";
-        for (int i = 0; i<date.size();i++)
+        ReaderCSV a = new ReaderCSV(parser);
+        ArrayList <Date> listDate = parser.DateConverter(a);
+        ArrayList <Double> averages =  parser.getAverage(T, listD);
+        ArrayList <AverageTable> listOfAll = new ArrayList<>();
+        int limit = parser.LimitExceeded(T,a);
+
+
+        for (int j = 0; j< listDate.size(); j++)
+            {
+
+               for (int i = 0; i < averages.size(); i++)
+               {
+                   AverageTable at = new AverageTable();
+                   at.setDate(listDate.get(j));
+                   at.setAverage(averages.get(i));
+                   at.setSensorType(T);
+                 //  at.setLimitExceed(limit);
+                   listOfAll.add(at);
+               }
+
+            }
+
+
+        ObjectMapper mapper = new ObjectMapper();
+        if (T.equals(Type.T))
         {
-             a = "[" + "\"" + date.get(i) + "\"" + "]" +",";
-            System.out.println(a);
+            try {
+                mapper.writeValue(new File("target/listAverageT.json"),listOfAll);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
         }
+        if (T.equals(Type.PM10))
+        {
+            try {
+                mapper.writeValue(new File("target/listAveragePM10.json"),listOfAll);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (T.equals(Type.PM2_5))
+        {
+            try {
+                mapper.writeValue(new File("target/listAveragePM2_5.json"),listOfAll);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (T.equals(Type.RH))
+        {
+            try {
+                mapper.writeValue(new File("target/listAverageRH.json"),listOfAll);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
 
     }
 
-    public static void printDateJSON(ArrayList <String> date)
-    {
-        JSONArray list = new JSONArray();
-        for (int i=0;i<date.size();i++)
-        {
-            list.put(date.get(i));
-        }
-        System.out.println(list);
-    }
+
 
 
 }
